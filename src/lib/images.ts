@@ -9,15 +9,21 @@ const TYPE_PHOTO: Record<VehicleType, string> = {
   scooter: "/images/vehicles/scooter.jpg",
 };
 
+/** Model-specific photos (by slug) override the per-type photo. */
+const MODEL_PHOTO: Record<string, string> = {
+  "honda-crf300l": "/images/vehicles/crf.jpg",
+  "honda-crf250f": "/images/vehicles/crf.jpg",
+};
+
 /** Tours reuse the matching vehicle photo; camping keeps its illustration. */
 const TOUR_IMAGE: Record<TourCategory, string> = {
   "atv-tour": TYPE_PHOTO.atv,
   "day-tour": TYPE_PHOTO.atv,
-  "dirt-bike-tour": TYPE_PHOTO.dirtbike,
+  "dirt-bike-tour": "/images/vehicles/crf.jpg", // tours ride CRF250Fs
   camping: "/images/tours/camping.svg",
 };
 
-export const vehicleImage = (m: Pick<VehicleModel, "images" | "type">) => m.images[0] ?? TYPE_PHOTO[m.type];
+export const vehicleImage = (m: Pick<VehicleModel, "images" | "type" | "slug">) => m.images[0] ?? MODEL_PHOTO[m.slug] ?? TYPE_PHOTO[m.type];
 /** Card thumbnails use the same photo (square photos crop cleanly to the card column). */
 export const vehicleThumb = vehicleImage;
 export const tourImage = (t: Pick<Tour, "images" | "category">) => t.images[0] ?? TOUR_IMAGE[t.category];
