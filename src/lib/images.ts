@@ -11,8 +11,11 @@ const TYPE_PHOTO: Record<VehicleType, string> = {
 
 /** Model-specific photos (by slug) override the per-type photo. */
 const MODEL_PHOTO: Record<string, string> = {
-  "honda-crf300l": "/images/vehicles/crf.jpg",
+  "honda-trx520": "/images/vehicles/trx520.jpg",
+  "kymco-mxu-300": "/images/vehicles/kymco-mxu300.jpg", // ⚠ supplied photo shows a different brand of quad — replace with a real Kymco photo
+  "honda-crf300l": "/images/vehicles/crf300l.jpg",
   "honda-crf250f": "/images/vehicles/crf.jpg",
+  "honda-xr190": "/images/vehicles/xr190.jpg",
 };
 
 /** Tours reuse the matching vehicle photo; camping keeps its illustration. */

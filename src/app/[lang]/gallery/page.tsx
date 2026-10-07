@@ -57,7 +57,7 @@ export default async function GalleryPage({ params }: PageProps<"/[lang]/gallery
         {tiles.map((t, i) => {
           const figure = (
             <figure className="panel card-hover overflow-hidden">
-              <div className={`relative ${i === 0 ? "aspect-[16/9]" : "aspect-square"}`}>
+              <div className={`relative ${i === 0 ? "aspect-[16/9]" : "aspect-[8/7]"}`}>
                 <Image src={t.src} alt={t.caption} fill sizes={i === 0 ? "(min-width:1024px) 66vw, 100vw" : "(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"} className="object-cover" />
               </div>
               <figcaption className="border-t border-cyan/40 px-4 py-2 font-display text-xl tracking-wide">{t.caption}</figcaption>

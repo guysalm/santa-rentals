@@ -8,8 +8,8 @@ import { formatUSD } from "@/lib/money";
 import { quoteRental, quoteTour, type RentalMode } from "@/lib/pricing";
 import type { Locale, Season, Tour, VehicleModel, VehicleType } from "@/lib/types";
 import { Stars } from "../Stars";
-import Image from "next/image";
-import { isIllustration, vehicleThumb } from "@/lib/images";
+import { vehicleThumb } from "@/lib/images";
+import { FitImage } from "../FitImage";
 
 export interface WizardProps {
   lang: Locale;
@@ -279,7 +279,7 @@ export function BookingWizard(props: WizardProps) {
                   const n = qty[m.slug] ?? 0;
                   return (
                     <li key={m.id} className={`panel flex gap-3 p-3 ${n > 0 ? "!border-pink" : ""}`}>
-                      <span className="relative h-20 w-28 shrink-0 overflow-hidden rounded-lg border border-cyan/40"><Image src={vehicleThumb(m)} alt="" fill unoptimized={isIllustration(vehicleThumb(m))} sizes="112px" className="object-cover" /></span>
+                      <span className="relative h-20 w-28 shrink-0 overflow-hidden rounded-lg border border-cyan/40"><FitImage src={vehicleThumb(m)} alt="" sizes="112px" /></span>
                       <div className="flex min-w-0 flex-1 flex-col gap-1">
                         <p className="font-display text-2xl leading-none tracking-wide">
                           {m.brand} {m.name}
