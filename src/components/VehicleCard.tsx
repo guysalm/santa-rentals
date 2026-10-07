@@ -25,7 +25,7 @@ export function VehicleCard({ lang, dict, model }: { lang: Locale; dict: Diction
         <span className="chip absolute left-2 top-2 bg-night/80 !text-xs text-cyan">{dict.types[model.type]}</span>
       </Link>
       <div className="flex min-w-0 flex-1 flex-col border-l-2 border-cyan/50 p-4">
-        <h3 className="text-[1.6rem] leading-none tracking-wide">
+        <h3 className="text-xl leading-none tracking-wide sm:text-[1.6rem]">
           <Link href={localePath(lang, `/fleet/${model.slug}`)} className="hover:text-cyan">
             {title}
           </Link>

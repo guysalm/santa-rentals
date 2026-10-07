@@ -36,12 +36,6 @@ export const tourImage = (t: Pick<Tour, "images" | "category">) => t.images[0] ?
 /** Local SVG illustrations skip the image optimizer (it doesn't rasterize SVG). */
 export const isIllustration = (src: string) => src.endsWith(".svg");
 
-/** Hero background photo (owner-supplied). */
-export const HERO_IMAGE = "/images/hero-beach.jpg";
+/** Hero background (owner-supplied): sunset beach with the ATV + dirt bike built in. */
+export const HERO_IMAGE = "/images/hero-sunset-v2.jpg";
 
-/**
- * Glowing ATV + dirt bike silhouette shown in the hero's center, above the booking
- * widget. Set to e.g. "/images/hero-vehicles.png" (transparent PNG/WebP) once the
- * image is supplied; until then the hero reserves the space empty.
- */
-export const HERO_VEHICLES: string | null = null;
