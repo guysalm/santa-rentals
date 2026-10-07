@@ -11,19 +11,20 @@ const TYPE_PHOTO: Record<VehicleType, string> = {
 
 /** Model-specific photos (by slug) override the per-type photo. */
 const MODEL_PHOTO: Record<string, string> = {
-  "honda-trx520": "/images/vehicles/trx520.jpg",
-  "kymco-mxu-300": "/images/vehicles/kymco-mxu300.jpg", // ⚠ supplied photo shows a different brand of quad — replace with a real Kymco photo
-  "honda-crf300l": "/images/vehicles/crf300l.jpg",
-  "honda-crf250f": "/images/vehicles/crf.jpg",
-  "honda-xr190": "/images/vehicles/xr190.jpg",
-  "honda-navi": "/images/vehicles/navi.jpg",
+  "honda-trx420": "/images/vehicles/trx420.jpg",
+  "honda-trx520": "/images/vehicles/trx520-v2.jpg",
+  "kymco-mxu-300": "/images/vehicles/kymco-mxu300-v2.jpg", // ⚠ supplied photo is not a Kymco — replace with a real one
+  "honda-crf300l": "/images/vehicles/crf-v2.jpg",
+  "honda-crf250f": "/images/vehicles/crf-v2.jpg",
+  "honda-xr190": "/images/vehicles/xr190-v2.jpg",
+  "honda-navi": "/images/vehicles/navi-v2.jpg",
 };
 
 /** Tours reuse the matching vehicle photo; camping keeps its illustration. */
 const TOUR_IMAGE: Record<TourCategory, string> = {
   "atv-tour": TYPE_PHOTO.atv,
   "day-tour": TYPE_PHOTO.atv,
-  "dirt-bike-tour": "/images/vehicles/crf.jpg", // tours ride CRF250Fs
+  "dirt-bike-tour": "/images/vehicles/crf-v2.jpg", // tours ride CRF250Fs
   camping: "/images/tours/camping.svg",
 };
 
