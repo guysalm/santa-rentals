@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration: day tour near Santa Teresa"><title>Illustration: day tour near Santa Teresa</title>
+<defs>
+  <linearGradient id="tdaytour-sky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#14052B"/>
+    <stop offset=".32" stop-color="#4A1474"/>
+    <stop offset=".58" stop-color="#C21E78"/>
+    <stop offset=".78" stop-color="#FF5A3C"/>
+    <stop offset="1" stop-color="#FFB43C"/>
+  </linearGradient>
+  <radialGradient id="tdaytour-sun" cx=".5" cy=".5" r=".5">
+    <stop offset="0" stop-color="#FFF6C4"/>
+    <stop offset=".55" stop-color="#FFD23F"/>
+    <stop offset="1" stop-color="#FF8A2A"/>
+  </radialGradient>
+  <radialGradient id="tdaytour-sunglow" cx=".5" cy=".5" r=".5">
+    <stop offset="0" stop-color="#FFB347" stop-opacity=".75"/>
+    <stop offset="1" stop-color="#FF3D7F" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="tdaytour-sea" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#8A2B8F"/>
+    <stop offset=".45" stop-color="#3B1466"/>
+    <stop offset="1" stop-color="#1A0838"/>
+  </linearGradient>
+  <linearGradient id="tdaytour-sand" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#E0794A"/>
+    <stop offset=".5" stop-color="#9C3E52"/>
+    <stop offset="1" stop-color="#3A1236"/>
+  </linearGradient>
+  <linearGradient id="tdaytour-body" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#B14DFF"/>
+    <stop offset=".55" stop-color="#7A1FD1"/>
+    <stop offset="1" stop-color="#FF007F"/>
+  </linearGradient>
+  <linearGradient id="tdaytour-red" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#FF4D6D"/>
+    <stop offset="1" stop-color="#C2003F"/>
+  </linearGradient>
+  <linearGradient id="tdaytour-teal" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#3FF2E0"/>
+    <stop offset="1" stop-color="#0A7FA8"/>
+  </linearGradient>
+  <linearGradient id="tdaytour-chrome" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#F4F7FF"/>
+    <stop offset=".5" stop-color="#8E97B5"/>
+    <stop offset="1" stop-color="#E6ECFF"/>
+  </linearGradient>
+  <filter id="tdaytour-glow" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur stdDeviation="3" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="tdaytour-soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
+  
+</defs>
+    
+  <rect width="640" height="202" fill="url(#tdaytour-sky)"/>
+  <circle cx="314" cy="50" r="0.6" fill="#fff" opacity="0.45"/><circle cx="284" cy="46" r="0.5" fill="#fff" opacity="0.83"/><circle cx="377" cy="37" r="0.8" fill="#fff" opacity="0.77"/><circle cx="421" cy="7" r="1.1" fill="#fff" opacity="0.44"/><circle cx="430" cy="14" r="1.2" fill="#fff" opacity="0.59"/><circle cx="113" cy="5" r="1.7" fill="#fff" opacity="0.88"/><circle cx="77" cy="40" r="1.7" fill="#fff" opacity="0.41"/><circle cx="268" cy="50" r="1.3" fill="#fff" opacity="0.47"/><circle cx="109" cy="89" r="1.0" fill="#fff" opacity="0.44"/><circle cx="350" cy="30" r="0.6" fill="#fff" opacity="0.76"/><circle cx="225" cy="32" r="0.5" fill="#fff" opacity="0.86"/><circle cx="153" cy="80" r="1.1" fill="#fff" opacity="0.44"/><circle cx="386" cy="36" r="1.5" fill="#fff" opacity="0.69"/><circle cx="87" cy="20" r="1.0" fill="#fff" opacity="0.35"/><circle cx="30" cy="37" r="1.4" fill="#fff" opacity="0.69"/><circle cx="611" cy="29" r="1.0" fill="#fff" opacity="0.60"/><circle cx="281" cy="75" r="1.0" fill="#fff" opacity="0.56"/><circle cx="169" cy="21" r="1.4" fill="#fff" opacity="0.38"/><circle cx="173" cy="69" r="1.6" fill="#fff" opacity="0.88"/><circle cx="593" cy="77" r="1.4" fill="#fff" opacity="0.68"/><circle cx="355" cy="2" r="0.9" fill="#fff" opacity="0.51"/><circle cx="138" cy="35" r="1.4" fill="#fff" opacity="0.74"/><circle cx="171" cy="86" r="0.4" fill="#fff" opacity="0.52"/><circle cx="375" cy="40" r="0.5" fill="#fff" opacity="0.89"/><circle cx="292" cy="79" r="1.2" fill="#fff" opacity="0.58"/><circle cx="80" cy="71" r="1.7" fill="#fff" opacity="0.46"/><circle cx="16" cy="14" r="1.4" fill="#fff" opacity="0.72"/><circle cx="423" cy="78" r="0.7" fill="#fff" opacity="0.80"/><circle cx="108" cy="3" r="0.5" fill="#fff" opacity="0.31"/><circle cx="344" cy="75" r="1.6" fill="#fff" opacity="0.39"/><circle cx="316" cy="5" r="0.8" fill="#fff" opacity="0.59"/><circle cx="41" cy="32" r="0.7" fill="#fff" opacity="0.48"/><circle cx="506" cy="12" r="0.6" fill="#fff" opacity="0.30"/><circle cx="399" cy="8" r="1.0" fill="#fff" opacity="0.37"/><circle cx="306" cy="37" r="0.4" fill="#fff" opacity="0.75"/><circle cx="289" cy="66" r="0.9" fill="#fff" opacity="0.86"/><circle cx="459" cy="58" r="0.8" fill="#fff" opacity="0.52"/><circle cx="49" cy="79" r="0.5" fill="#fff" opacity="0.34"/><circle cx="119" cy="27" r="0.4" fill="#fff" opacity="0.66"/><circle cx="281" cy="34" r="1.2" fill="#fff" opacity="0.84"/><circle cx="338" cy="38" r="0.6" fill="#fff" opacity="0.84"/><circle cx="424" cy="45" r="1.7" fill="#fff" opacity="0.71"/><circle cx="293" cy="87" r="1.6" fill="#fff" opacity="0.55"/><circle cx="318" cy="63" r="1.5" fill="#fff" opacity="0.85"/><circle cx="349" cy="89" r="1.3" fill="#fff" opacity="0.80"/><circle cx="282" cy="7" r="1.8" fill="#fff" opacity="0.63"/><circle cx="417" cy="35" r="1.5" fill="#fff" opacity="0.77"/><circle cx="321" cy="40" r="1.6" fill="#fff" opacity="0.73"/><circle cx="33" cy="33" r="1.1" fill="#fff" opacity="0.89"/><circle cx="422" cy="14" r="1.3" fill="#fff" opacity="0.40"/><circle cx="128" cy="47" r="0.8" fill="#fff" opacity="0.31"/><circle cx="614" cy="46" r="0.4" fill="#fff" opacity="0.53"/><circle cx="118" cy="59" r="0.7" fill="#fff" opacity="0.74"/>
+  <circle cx="330" cy="200" r="110.00000000000001" fill="url(#tdaytour-sunglow)"/>
+  <circle cx="330" cy="200" r="50" fill="url(#tdaytour-sun)"/>
+  <rect y="200" width="640" height="200" fill="url(#tdaytour-sea)"/>
+  <rect x="302.5" y="210" width="55" height="3" rx="2" fill="#FFD23F" opacity="0.55"/><rect x="305.5" y="228" width="49" height="3.6" rx="2" fill="#FFD23F" opacity="0.49"/><rect x="308.5" y="246" width="43" height="4.2" rx="2" fill="#FFD23F" opacity="0.43"/><rect x="311.5" y="264" width="37" height="4.8" rx="2" fill="#FFD23F" opacity="0.37"/><rect x="314.5" y="282" width="31" height="5.4" rx="2" fill="#FFD23F" opacity="0.31"/><rect x="317.5" y="300" width="25" height="6" rx="2" fill="#FFD23F" opacity="0.25"/><rect x="320.5" y="318" width="19" height="6.6" rx="2" fill="#FFD23F" opacity="0.19"/>
+    <rect y="200" width="640" height="120" fill="#1BA3B8" opacity=".55"/>
+    <path d="M0 200 L0 140 L60 120 L130 160 L170 200 Z" fill="#2A0E44"/>
+    <path d="M520 200 L560 150 L640 140 L640 200 Z" fill="#2A0E44"/>
+    <path d="M60 300 Q90 260 140 290 Q170 270 200 300 Z" fill="#1C0833"/>
+    <path d="M460 296 Q500 250 560 286 Q600 270 640 292 L640 300 Z" fill="#1C0833"/>
+    <path d="M0 400 L0 300 Q220 280 400 300 Q540 312 640 300 L640 400 Z" fill="url(#tdaytour-sand)"/>
+    <path d="M0 300 Q220 280 400 300 Q540 312 640 300" fill="none" stroke="#FFF" stroke-opacity=".6" stroke-width="4"/>
+    <g transform="translate(40 380) scale(0.9333333333333333 0.9333333333333333)" fill="#0B0414">
+    <path d="M-7 0 C-4 -90 18 -200 46 -290 L58 -286 C34 -200 12 -100 9 0 Z"/>
+    <g transform="translate(52 -288)"><path d="M0 0 Q-46.1 -80.6 -112.8 -41.0 Q-48.4 -56.6 0 6 Z"/><path d="M0 0 Q-18.0 -83.1 -72.1 -72.1 Q-18.9 -59.1 0 6 Z"/><path d="M0 0 Q5.4 -72.7 -28.7 -78.9 Q5.6 -48.7 0 6 Z"/><path d="M0 0 Q48.7 -93.5 41.0 -112.8 Q51.1 -69.5 0 6 Z"/><path d="M0 0 Q55.5 -81.8 78.1 -65.6 Q58.2 -57.8 0 6 Z"/><path d="M0 0 Q46.0 -60.8 81.1 -21.7 Q48.3 -36.8 0 6 Z"/><path d="M0 0 Q50.2 -45.6 115.9 31.1 Q52.7 -21.6 0 6 Z"/><path d="M0 0 Q-56.6 -37.2 -95.8 34.9 Q-59.5 -13.2 0 6 Z"/><path d="M0 0 Q21.0 -66.0 -0.0 -84.0 Q22.0 -42.0 0 6 Z"/><circle cx="-6" cy="6" r="9"/><circle cx="8" cy="9" r="8"/></g>
+  </g>
+    <g transform="translate(330 270) scale(.6)">
+<g>
+  <ellipse cx="155" cy="190" rx="155" ry="12" fill="#000" opacity=".45"/>
+  <path d="M112 104 L200 104 L192 134 L122 134 Z" fill="#1A0F26"/>
+  <rect x="120" y="128" width="70" height="7" rx="3" fill="#2E1E44"/>
+  
+  <circle cx="70" cy="142" r="48" fill="#0B0414"/>
+  <circle cx="70" cy="142" r="44" fill="none" stroke="#2A1A3E" stroke-width="7" stroke-dasharray="7 5"/>
+  <circle cx="70" cy="142" r="24" fill="#251638" stroke="#00F3FF" stroke-width="2.5" filter="url(#tdaytour-glow)"/>
+  <circle cx="70" cy="142" r="9.600000000000001" fill="url(#tdaytour-chrome)"/>
+  
+  <circle cx="242" cy="144" r="45" fill="#0B0414"/>
+  <circle cx="242" cy="144" r="41" fill="none" stroke="#2A1A3E" stroke-width="7" stroke-dasharray="7 5"/>
+  <circle cx="242" cy="144" r="22.5" fill="#251638" stroke="#00F3FF" stroke-width="2.5" filter="url(#tdaytour-glow)"/>
+  <circle cx="242" cy="144" r="9" fill="url(#tdaytour-chrome)"/>
+  <path d="M8 110 Q16 66 70 64 Q124 64 136 102 L136 112 L118 112 Q110 86 70 86 Q32 86 24 112 Z" fill="url(#tdaytour-body)"/>
+  <path d="M186 106 Q194 70 242 68 Q290 70 300 106 L284 110 Q276 90 242 90 Q208 90 200 110 Z" fill="url(#tdaytour-body)"/>
+  <path d="M112 102 L124 70 L204 62 L222 100 Z" fill="url(#tdaytour-body)"/>
+  <path d="M120 98 L130 74 L198 68" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="3"/>
+  <path d="M58 66 Q104 50 156 56 L154 70 L60 76 Z" fill="#1A0F26"/>
+  <path d="M66 64 Q104 54 150 58" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="3"/>
+  <path d="M10 60 L84 56 M18 60 L18 70 M76 56 L76 66" stroke="#2E1E44" stroke-width="5" stroke-linecap="round"/>
+  <path d="M220 60 L296 62 M290 62 L290 72" stroke="#2E1E44" stroke-width="5" stroke-linecap="round"/>
+  <path d="M206 64 L218 28" stroke="#2E1E44" stroke-width="6" stroke-linecap="round"/>
+  <path d="M198 28 L236 22" stroke="#0B0414" stroke-width="6" stroke-linecap="round"/>
+  <rect x="282" y="80" width="18" height="10" rx="3" fill="#00F3FF" filter="url(#tdaytour-glow)"/>
+  <rect x="276" y="94" width="12" height="6" rx="2" fill="#00F3FF" opacity=".8" filter="url(#tdaytour-glow)"/>
+  <path d="M8 110 Q16 66 70 64 Q124 64 136 102" fill="none" stroke="#FF007F" stroke-width="2.5" filter="url(#tdaytour-glow)"/>
+  <path d="M186 106 Q194 70 242 68 Q290 70 300 106" fill="none" stroke="#00F3FF" stroke-width="2.5" filter="url(#tdaytour-glow)"/>
+  <rect x="2" y="104" width="10" height="6" rx="2" fill="#FF007F" filter="url(#tdaytour-glow)"/>
+</g></g></svg>

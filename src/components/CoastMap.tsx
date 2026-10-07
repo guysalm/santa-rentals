@@ -1,0 +1,169 @@
+import Link from "next/link";
+import type { Dictionary } from "@/dictionaries";
+import { localePath } from "@/lib/i18n";
+import { formatUSD } from "@/lib/money";
+import type { Locale, Tour } from "@/lib/types";
+import { COAST, MISSION_ROUTES, PLACES } from "@/content/map";
+
+/**
+ * "Pick your mission": retro neon map of the Santa Teresa coast (original
+ * artwork, inline SVG) with clickable area pins and one glowing route per tour.
+ * Hovering a mission in the list highlights its route (CSS :has, no JS).
+ */
+export function CoastMap({ lang, dict, tours }: { lang: Locale; dict: Dictionary; tours: Tour[] }) {
+  const missions = tours.filter((t) => MISSION_ROUTES[t.slug]);
+  const highlight = missions
+    .map((t) => `.coast-map:has([data-m="${t.slug}"]:hover) .route-${t.slug}{stroke-width:7;opacity:1}.coast-map:has([data-m="${t.slug}"]:hover) .route{opacity:.25}`)
+    .join("");
+
+  return (
+    <div className="coast-map grid items-start gap-8 lg:grid-cols-[1.35fr_1fr]">
+      <style>{highlight}</style>
+      <figure className="panel relative overflow-hidden p-0 lg:-rotate-1">
+        <svg viewBox="0 0 800 600" role="img" aria-labelledby="coast-map-title" className="block h-auto w-full">
+          <title id="coast-map-title">{`${dict.home.mapTitle} — Santa Teresa, Mal País, Montezuma, Cabo Blanco`}</title>
+          <defs>
+            <pattern id="cm-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M40 0H0V40" fill="none" stroke="#00F3FF" strokeOpacity=".09" />
+            </pattern>
+            <linearGradient id="cm-sea" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#0B0B3A" />
+              <stop offset="1" stopColor="#1A0838" />
+            </linearGradient>
+            <linearGradient id="cm-land" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#3A1A63" />
+              <stop offset=".6" stopColor="#2A1050" />
+              <stop offset="1" stopColor="#1E0A3C" />
+            </linearGradient>
+            <filter id="cm-glow" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="3.5" result="b" />
+              <feMerge>
+                <feMergeNode in="b" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+
+          {/* Sea + grid */}
+          <rect width="800" height="600" fill="url(#cm-sea)" />
+          <rect width="800" height="600" fill="url(#cm-grid)" />
+          {[0, 1, 2].map((i) => (
+            <path key={i} d={COAST.land} fill="none" stroke="#00F3FF" strokeOpacity={0.12 - i * 0.03} strokeWidth="2" transform={`translate(${-14 - i * 14} ${10 + i * 10})`} />
+          ))}
+
+          {/* Land */}
+          <path d={COAST.land} fill="url(#cm-land)" />
+          <path d={COAST.reserve} fill="#1F5C45" opacity=".55" />
+          {[0.94, 0.88].map((s) => (
+            <path key={s} d={COAST.land} fill="none" stroke="#B26BFF" strokeOpacity=".14" transform={`translate(${800 * (1 - s) * 0.9} ${-8}) scale(${s})`} />
+          ))}
+          <path d={COAST.land} fill="none" stroke="#FF007F" strokeWidth="3" filter="url(#cm-glow)" />
+
+          {/* Water labels */}
+          <text x="60" y="400" fill="#00F3FF" fillOpacity=".5" fontSize="22" fontStyle="italic" letterSpacing="8" fontFamily="var(--font-bebas), Impact, sans-serif" transform="rotate(-62 60 400)">
+            PACIFIC OCEAN
+          </text>
+          <text x="640" y="470" fill="#00F3FF" fillOpacity=".45" fontSize="16" fontStyle="italic" letterSpacing="5" fontFamily="var(--font-bebas), Impact, sans-serif" transform="rotate(-32 640 470)">
+            {lang === "es" ? "GOLFO DE NICOYA" : "GULF OF NICOYA"}
+          </text>
+          <text x="410" y="430" fill="#7CF2C4" fillOpacity=".6" fontSize="11" letterSpacing="2" fontFamily="var(--font-inter), sans-serif">
+            {lang === "es" ? "RESERVA CABO BLANCO" : "CABO BLANCO RESERVE"}
+          </text>
+
+          {/* Roads */}
+          {COAST.roads.map((d) => (
+            <path key={d} d={d} fill="none" stroke="#8C6BB8" strokeOpacity=".55" strokeWidth="2.5" strokeDasharray="2 6" strokeLinecap="round" />
+          ))}
+
+          {/* Mission routes */}
+          {missions.map((t) => {
+            const r = MISSION_ROUTES[t.slug];
+            return (
+              <g key={t.slug}>
+                <path d={r.d} fill="none" stroke={r.color} strokeWidth="9" strokeOpacity=".18" strokeLinecap="round" />
+                <path className={`route route-${t.slug} route-flow transition-all`} d={r.d} fill="none" stroke={r.color} strokeWidth="4" strokeLinecap="round" opacity=".9" filter="url(#cm-glow)" />
+                {r.marker && (
+                  <a href={localePath(lang, `/tours/${t.slug}`)} aria-label={t.content[lang].title}>
+                    <circle cx={r.marker.x} cy={r.marker.y} r="15" fill="#0D0418" stroke={r.color} strokeWidth="2.5" filter="url(#cm-glow)" />
+                    <text x={r.marker.x} y={r.marker.y + 5} fontSize="15" textAnchor="middle">
+                      {r.marker.icon}
+                    </text>
+                  </a>
+                )}
+              </g>
+            );
+          })}
+
+          {/* Pins */}
+          {PLACES.map((p) => {
+            const color = p.hq ? "#FF007F" : "#00F3FF";
+            const label = p.hq ? `${p.name} · ${dict.home.homeBase}` : p.name;
+            const lx = p.labelSide === "left" ? p.x - 14 : p.x + 14;
+            const anchor = p.labelSide === "left" ? "end" : "start";
+            const pin = (
+              <g className="transition-transform">
+                <path d={`M${p.x} ${p.y} c-7 -10 -12 -15 -12 -22 a12 12 0 1 1 24 0 c0 7 -5 12 -12 22z`} fill={p.hq ? "#FF007F" : "#0D0418"} stroke={color} strokeWidth="2.5" filter="url(#cm-glow)" />
+                <circle cx={p.x} cy={p.y - 22} r={p.hq ? 5 : 4} fill={p.hq ? "#fff" : color} />
+                <text x={lx} y={p.y - 16} textAnchor={anchor} fontSize={p.hq ? 19 : 15} letterSpacing="1.5" fill="#fff" stroke="#0D0418" strokeWidth="4" paintOrder="stroke" fontFamily="var(--font-bebas), Impact, sans-serif">
+                  {label.toUpperCase()}
+                </text>
+              </g>
+            );
+            return p.href ? (
+              <a key={p.id} href={localePath(lang, p.href)} aria-label={p.name} className="cursor-pointer [&:hover_path]:fill-pink">
+                {pin}
+              </a>
+            ) : (
+              <g key={p.id}>{pin}</g>
+            );
+          })}
+
+          {/* Compass + banner */}
+          <g transform="translate(728 70)" fill="none" stroke="#00F3FF" strokeWidth="2" filter="url(#cm-glow)">
+            <circle r="30" strokeOpacity=".5" />
+            <path d="M0 -26 L7 0 L0 26 L-7 0 Z" fill="#FF007F" stroke="#FF007F" />
+            <text y="-36" textAnchor="middle" fill="#00F3FF" stroke="none" fontSize="14" fontFamily="var(--font-bebas), Impact, sans-serif">
+              N
+            </text>
+          </g>
+          <g transform="translate(560 560) rotate(-6)">
+            <rect x="-6" y="-26" width="236" height="38" rx="6" fill="#0D0418" stroke="#FF8A2A" strokeWidth="2" filter="url(#cm-glow)" />
+            <text x="112" y="2" textAnchor="middle" fill="#FFD9BF" fontSize="24" letterSpacing="3" fontFamily="var(--font-bebas), Impact, sans-serif">
+              {dict.home.mapTitle.toUpperCase()}
+            </text>
+          </g>
+          <text x="16" y="588" fill="#C9B8E6" fillOpacity=".6" fontSize="11" fontFamily="var(--font-inter), sans-serif">
+            {dict.home.mapNote}
+          </text>
+        </svg>
+      </figure>
+
+      <div>
+        <p className="mb-4 text-muted">{dict.home.mapLead}</p>
+        <ul className="space-y-3">
+          {missions.map((t) => {
+            const r = MISSION_ROUTES[t.slug];
+            return (
+              <li key={t.slug} data-m={t.slug}>
+                <Link
+                  href={localePath(lang, `/tours/${t.slug}`)}
+                  className="panel card-hover flex items-center gap-4 px-4 py-3"
+                  style={{ borderColor: r.color, boxShadow: `0 0 12px ${r.color}55, inset 0 0 10px ${r.color}22` }}
+                >
+                  <span className="h-3 w-3 shrink-0 rounded-full" style={{ background: r.color, boxShadow: `0 0 10px ${r.color}` }} aria-hidden />
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate font-display text-xl tracking-wide">{t.content[lang].title}</span>
+                    <span className="text-xs text-muted">
+                      {dict.categories[t.category].name} · {t.overnight ? dict.common.overnight : `${t.durationHours} ${dict.common.hours}`}
+                    </span>
+                  </span>
+                  <span className="price-pink text-xl">{formatUSD(t.priceCents)}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
+  );
+}

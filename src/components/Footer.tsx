@@ -13,7 +13,40 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const link = "hover:text-cyan";
   return (
     <footer className="mt-24 bg-night-2">
-      <div className="stripe-divider" />
+      <div className="gradient-bar" />
+      {/* Quick-links bar */}
+      <div className="border-b border-cyan/30">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-5">
+          <nav aria-label="Help" className="flex items-center gap-4 font-display text-3xl tracking-widest text-cyan [text-shadow:0_0_10px_#00f3ff]">
+            <Link href={p("/faq")} className="hover:text-pink-soft">
+              FAQ
+            </Link>
+            <span aria-hidden className="text-pink">|</span>
+            <Link href={p("/terms")} className="hover:text-pink-soft">
+              {f.terms}
+            </Link>
+            <span aria-hidden className="text-pink">|</span>
+            <Link href={p("/guides/driving-an-atv-in-costa-rica-rules")} className="hover:text-pink-soft">
+              {f.safety}
+            </Link>
+          </nav>
+          <div className="flex items-center gap-3">
+            <span className="text-xs uppercase tracking-widest text-muted">{f.follow}</span>
+            <SocialIcon href={SITE.instagram} label="Instagram">
+              <rect x="4" y="4" width="16" height="16" rx="5" />
+              <circle cx="12" cy="12" r="3.6" />
+              <circle cx="17" cy="7" r="0.9" fill="currentColor" />
+            </SocialIcon>
+            <SocialIcon href={waLink()} label="WhatsApp">
+              <path d="M5 19l1.2-3.6A7.5 7.5 0 1 1 9 18.4L5 19z" />
+            </SocialIcon>
+            <SocialIcon href={`mailto:${SITE.email}`} label="Email">
+              <rect x="3.5" y="6" width="17" height="12" rx="2" />
+              <path d="M4 7l8 6 8-6" />
+            </SocialIcon>
+          </div>
+        </div>
+      </div>
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <Logo />
@@ -70,4 +103,21 @@ async function Year() {
   "use cache";
   cacheLife("days");
   return <>{new Date().getFullYear()}</>;
+}
+
+// Generic outline icons (not the platforms' trademarked logos).
+function SocialIcon({ href, label, children }: { href: string; label: string; children: React.ReactNode }) {
+  return (
+    <a
+      href={href}
+      aria-label={label}
+      rel="noopener"
+      target={href.startsWith("http") ? "_blank" : undefined}
+      className="grid h-10 w-10 place-items-center rounded-lg border-2 border-pink text-pink-soft shadow-[0_0_10px_#ff007f80] transition hover:bg-pink hover:text-white"
+    >
+      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+        {children}
+      </svg>
+    </a>
+  );
 }

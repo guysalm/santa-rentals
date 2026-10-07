@@ -21,7 +21,7 @@ export function StaticPage({ lang, page }: { lang: Locale; page: StaticPageKey }
       <div className="mt-8">
         <SectionHeading as="h1" title={p.h1} />
       </div>
-      <div className="prose-vice">
+      <div className="prose-retro">
         {p.sections.map((s, i) => (
           <section key={s.h ?? i}>
             {s.h && <h2>{s.h}</h2>}

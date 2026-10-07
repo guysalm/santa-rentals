@@ -48,7 +48,7 @@ export default async function AreaPage({ params }: PageProps<"/[lang]/areas/[are
       </div>
 
       <div className="grid gap-10 lg:grid-cols-3">
-        <div className="prose-vice lg:col-span-2">
+        <div className="prose-retro lg:col-span-2">
           {c.body.map((p) => (
             <p key={p.slice(0, 24)}>{p}</p>
           ))}

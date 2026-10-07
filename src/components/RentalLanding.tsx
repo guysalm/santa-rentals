@@ -62,7 +62,7 @@ export async function RentalLanding({ lang, dict, type, path }: { lang: Locale; 
         <p className="mt-3 text-sm text-muted">{dict.common.taxNote}</p>
       </section>
 
-      <section className="prose-vice mt-16 max-w-3xl">
+      <section className="prose-retro mt-16 max-w-3xl">
         {LANDING[type][lang].map((s) => (
           <div key={s.h}>
             <h2>{s.h}</h2>

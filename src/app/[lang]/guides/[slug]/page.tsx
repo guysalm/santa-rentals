@@ -44,7 +44,7 @@ export default async function GuidePage({ params }: PageProps<"/[lang]/guides/[s
       <p className="mt-2 text-sm text-muted">
         <time dateTime={g.published}>{g.published}</time>
       </p>
-      <div className="prose-vice mt-8">
+      <div className="prose-retro mt-8">
         <p className="!text-lg !text-ink">{c.intro}</p>
         {c.sections.map((s) => (
           <section key={s.h}>

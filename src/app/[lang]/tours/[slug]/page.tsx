@@ -14,7 +14,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { SectionHeading } from "@/components/SectionHeading";
 import { Stars } from "@/components/Stars";
 import { TourCard } from "@/components/TourCard";
-import { VehicleArt } from "@/components/VehicleArt";
+import { isIllustration, tourImage } from "@/lib/images";
 
 // One dynamic segment serves both category pages (/tours/atv-tours) and tours.
 const CATEGORY_BY_SLUG = Object.fromEntries(
@@ -126,22 +126,15 @@ async function TourView({ lang, dict, tour }: { lang: Locale; dict: Dictionary; 
       />
       <div className="mt-8 grid gap-10 lg:grid-cols-5">
         <div className="lg:col-span-3">
-          <div className="panel panel-cyan relative aspect-[16/9] overflow-hidden bg-gradient-to-b from-plum-2 via-pink/40 to-orange/50">
-            {tour.images[0] ? (
-              <Image src={tour.images[0]} alt={c.title} fill priority sizes="(min-width:1024px) 60vw, 100vw" className="object-cover" />
-            ) : (
-              <>
-                <div className="sun absolute left-1/2 top-[12%] h-40 w-40 -translate-x-1/2" aria-hidden />
-                <VehicleArt type={tour.category === "dirt-bike-tour" ? "dirtbike" : "atv"} title={c.title} className="absolute inset-x-0 bottom-0 mx-auto h-3/4 w-3/4" />
-              </>
-            )}
+          <div className="panel panel-pink relative aspect-[16/9] overflow-hidden">
+            <Image src={tourImage(tour)} alt={c.title} fill priority unoptimized={isIllustration(tourImage(tour))} sizes="(min-width:1024px) 60vw, 100vw" className="object-cover" />
           </div>
           <p className="chip mt-8 text-sun">{cat.name}</p>
           <h1 className="mt-3 text-6xl md:text-7xl">
             <span className="sunset-text">{c.title}</span>
           </h1>
           <p className="mt-4 text-xl text-ink/90">{c.summary}</p>
-          <div className="prose-vice mt-8">
+          <div className="prose-retro mt-8">
             <p>{c.description}</p>
             <h2>{dict.common.itinerary}</h2>
             <ul>

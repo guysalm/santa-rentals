@@ -8,6 +8,8 @@ import type { TourCategory } from "@/lib/types";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { SectionHeading } from "@/components/SectionHeading";
 import { TourCard } from "@/components/TourCard";
+import { CoastMap } from "@/components/CoastMap";
+import { MISSION_ROUTES } from "@/content/map";
 
 const CATEGORY_ORDER: TourCategory[] = ["atv-tour", "dirt-bike-tour", "camping", "day-tour"];
 
@@ -28,11 +30,16 @@ export default async function ToursPage({ params }: PageProps<"/[lang]/tours">) 
         <SectionHeading as="h1" kicker="Santa Teresa · Mal País · Montezuma" title={dict.tours.h1} lead={dict.tours.lead} />
       </div>
 
-      {/* "Radio station" category tabs */}
+      <section className="mb-16">
+        <h2 className="mb-6 text-4xl text-cyan">{dict.home.mapTitle}</h2>
+        <CoastMap lang={lang} dict={dict} tours={tours} />
+      </section>
+
+      {/* Category tabs */}
       <nav aria-label="Tour categories" className="mb-12 flex flex-wrap gap-3">
         {CATEGORY_ORDER.map((c) => (
           <Link key={c} href={localePath(lang, `/tours/${dict.categories[c].slug}`)} className="chip text-xl text-sun hover:bg-sun hover:text-night">
-            📻 {dict.categories[c].name}
+            {dict.categories[c].name}
           </Link>
         ))}
       </nav>
@@ -50,7 +57,7 @@ export default async function ToursPage({ params }: PageProps<"/[lang]/tours">) 
             <p className="mb-6 mt-2 text-muted">{dict.categories[c].blurb}</p>
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {list.map((t) => (
-                <TourCard key={t.id} lang={lang} dict={dict} tour={t} />
+                <TourCard key={t.id} lang={lang} dict={dict} tour={t} accent={MISSION_ROUTES[t.slug]?.color} />
               ))}
             </div>
           </section>

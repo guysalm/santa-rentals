@@ -9,7 +9,7 @@ import { FAQ } from "@/content/faq";
 import { Hero } from "@/components/Hero";
 import { SectionHeading } from "@/components/SectionHeading";
 import { VehicleCard } from "@/components/VehicleCard";
-import { TourCard } from "@/components/TourCard";
+import { CoastMap } from "@/components/CoastMap";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]">): Promise<Metadata> {
   const lang = await resolveLang(params);
@@ -29,20 +29,20 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <Hero lang={lang} dict={dict} />
 
       {/* USP strip */}
-      <section className="border-y-[3px] border-black bg-gradient-to-r from-pink via-orange to-sun text-night">
+      <section className="border-b border-cyan/30 bg-night-2/80">
         <ul className="mx-auto grid max-w-7xl gap-6 px-4 py-6 sm:grid-cols-2 lg:grid-cols-4">
           {h.usp.map((u) => (
-            <li key={u.title}>
-              <p className="font-display text-2xl tracking-wide">{u.title}</p>
-              <p className="text-sm font-medium">{u.text}</p>
+            <li key={u.title} className="border-l-2 border-pink pl-3 shadow-[inset_2px_0_8px_-4px_#ff007f]">
+              <p className="font-display text-2xl tracking-wide text-cyan">{u.title}</p>
+              <p className="text-sm text-muted">{u.text}</p>
             </li>
           ))}
         </ul>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-20">
-        <SectionHeading kicker={dict.nav.fleet} title={h.fleetTitle} lead={h.fleetLead} />
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="mx-auto max-w-7xl px-4 py-16">
+        <SectionHeading title={h.fleetTitle} lead={h.fleetLead} />
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {models.map((m) => (
             <VehicleCard key={m.id} lang={lang} dict={dict} model={m} />
           ))}
@@ -50,10 +50,23 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         <p className="mt-6 text-sm text-muted">{dict.common.taxNote}</p>
       </section>
 
-      <section className="bg-night-2 py-20">
+      <section className="relative py-16">
+        <div className="gradient-bar absolute inset-x-0 top-0 opacity-60" aria-hidden />
+        <div className="mx-auto max-w-7xl px-4">
+          <SectionHeading title={h.toursTitle} lead={h.toursLead} />
+          <CoastMap lang={lang} dict={dict} tours={tours} />
+          <div className="mt-10">
+            <Link href={localePath(lang, "/tours")} className="btn btn-ghost">
+              {dict.tours.all} ▸
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-night-2/70 py-16">
         <div className="mx-auto max-w-7xl px-4">
           <SectionHeading title={h.howTitle} />
-          <ol className="grid gap-8 md:grid-cols-3">
+          <ol className="grid gap-6 md:grid-cols-3">
             {h.how.map((s, i) => (
               <li key={s.title} className="panel p-6">
                 <span className="hud-money text-6xl">0{i + 1}</span>
@@ -62,20 +75,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
               </li>
             ))}
           </ol>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-20">
-        <SectionHeading kicker={dict.nav.tours} title={h.toursTitle} lead={h.toursLead} />
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {tours.slice(0, 6).map((t) => (
-            <TourCard key={t.id} lang={lang} dict={dict} tour={t} />
-          ))}
-        </div>
-        <div className="mt-10">
-          <Link href={localePath(lang, "/tours")} className="btn btn-ghost">
-            {dict.tours.all} ▸
-          </Link>
         </div>
       </section>
 
@@ -92,14 +91,14 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
         </ul>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-20">
-        <div className="panel relative overflow-hidden p-8 md:p-14">
-          <div className="sun absolute -right-16 -top-16 h-64 w-64 opacity-60" aria-hidden />
+      <section className="mx-auto max-w-7xl px-4 py-16">
+        <div className="panel panel-pink relative overflow-hidden p-8 md:p-14">
+          <div className="sun absolute -right-16 -top-16 h-64 w-64 opacity-50" aria-hidden />
           <h2 className="relative max-w-2xl text-5xl md:text-6xl">
             <span className="sunset-text">{h.agentTitle}</span>
           </h2>
           <p className="relative mt-4 max-w-2xl text-lg text-muted">{h.agentText}</p>
-          <Link href={localePath(lang, "/become-an-affiliate")} className="btn btn-sun relative mt-8">
+          <Link href={localePath(lang, "/become-an-affiliate")} className="btn btn-primary relative mt-8">
             {h.agentCta} ▸
           </Link>
         </div>

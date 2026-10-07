@@ -4,7 +4,7 @@ import { SITE, waLink } from "../site";
 import { crTime, manageUrl, reservationTitle, type ReservationDetail } from "../reservations";
 import type { Locale } from "../types";
 
-// Email-safe HTML (tables + inline styles) in the Vice City palette.
+// Email-safe HTML (tables + inline styles) in the site's retro-sunset palette.
 
 export const esc = (s: string | null | undefined) =>
   String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);

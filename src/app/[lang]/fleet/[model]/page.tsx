@@ -10,7 +10,7 @@ import { weekPrice } from "@/lib/pricing";
 import { pageMetadata, vehicleJsonLd } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { JsonLd } from "@/components/JsonLd";
-import { VehicleArt } from "@/components/VehicleArt";
+import { isIllustration, vehicleImage } from "@/lib/images";
 import { VehicleCard } from "@/components/VehicleCard";
 
 export async function generateStaticParams() {
@@ -54,12 +54,8 @@ export default async function ModelPage({ params }: PageProps<"/[lang]/fleet/[mo
         ]}
       />
       <div className="mt-8 grid gap-10 lg:grid-cols-2">
-        <div className="panel relative aspect-[4/3] overflow-hidden bg-[radial-gradient(ellipse_at_bottom,_#ff2e8866,_transparent_70%)]">
-          {model.images[0] ? (
-            <Image src={model.images[0]} alt={title} fill priority sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
-          ) : (
-            <VehicleArt type={model.type} title={title} className="absolute inset-0 h-full w-full p-10" />
-          )}
+        <div className="panel relative aspect-[4/3] overflow-hidden">
+          <Image src={vehicleImage(model)} alt={title} fill priority unoptimized={isIllustration(vehicleImage(model))} sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
         </div>
         <div>
           <p className="chip text-cyan">{dict.types[model.type]}</p>
@@ -99,7 +95,7 @@ export default async function ModelPage({ params }: PageProps<"/[lang]/fleet/[mo
         </div>
       </div>
 
-      <section className="prose-vice mt-16 grid gap-10 lg:grid-cols-2">
+      <section className="prose-retro mt-16 grid gap-10 lg:grid-cols-2">
         <div>
           <h2>{dict.common.learnMore}</h2>
           <p>{c.description}</p>

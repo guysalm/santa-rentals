@@ -14,7 +14,8 @@
     "test": "tsx --test tests/unit/pricing.test.ts",
     "test:e2e": "playwright test",
     "db:types": "supabase gen types typescript --local > src/lib/database.types.ts",
-    "make-admin": "tsx scripts/make-admin.ts"
+    "make-admin": "tsx scripts/make-admin.ts",
+    "art:gen": "tsx scripts/gen-art.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

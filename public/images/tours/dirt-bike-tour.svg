@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration: dirt bike tour near Santa Teresa"><title>Illustration: dirt bike tour near Santa Teresa</title>
+<defs>
+  <linearGradient id="tdirtbiketour-sky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#14052B"/>
+    <stop offset=".32" stop-color="#4A1474"/>
+    <stop offset=".58" stop-color="#C21E78"/>
+    <stop offset=".78" stop-color="#FF5A3C"/>
+    <stop offset="1" stop-color="#FFB43C"/>
+  </linearGradient>
+  <radialGradient id="tdirtbiketour-sun" cx=".5" cy=".5" r=".5">
+    <stop offset="0" stop-color="#FFF6C4"/>
+    <stop offset=".55" stop-color="#FFD23F"/>
+    <stop offset="1" stop-color="#FF8A2A"/>
+  </radialGradient>
+  <radialGradient id="tdirtbiketour-sunglow" cx=".5" cy=".5" r=".5">
+    <stop offset="0" stop-color="#FFB347" stop-opacity=".75"/>
+    <stop offset="1" stop-color="#FF3D7F" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="tdirtbiketour-sea" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#8A2B8F"/>
+    <stop offset=".45" stop-color="#3B1466"/>
+    <stop offset="1" stop-color="#1A0838"/>
+  </linearGradient>
+  <linearGradient id="tdirtbiketour-sand" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#E0794A"/>
+    <stop offset=".5" stop-color="#9C3E52"/>
+    <stop offset="1" stop-color="#3A1236"/>
+  </linearGradient>
+  <linearGradient id="tdirtbiketour-body" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#B14DFF"/>
+    <stop offset=".55" stop-color="#7A1FD1"/>
+    <stop offset="1" stop-color="#FF007F"/>
+  </linearGradient>
+  <linearGradient id="tdirtbiketour-red" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#FF4D6D"/>
+    <stop offset="1" stop-color="#C2003F"/>
+  </linearGradient>
+  <linearGradient id="tdirtbiketour-teal" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#3FF2E0"/>
+    <stop offset="1" stop-color="#0A7FA8"/>
+  </linearGradient>
+  <linearGradient id="tdirtbiketour-chrome" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#F4F7FF"/>
+    <stop offset=".5" stop-color="#8E97B5"/>
+    <stop offset="1" stop-color="#E6ECFF"/>
+  </linearGradient>
+  <filter id="tdirtbiketour-glow" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur stdDeviation="3" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="tdirtbiketour-soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
+  
+</defs>
+    
+  <rect width="640" height="232" fill="url(#tdirtbiketour-sky)"/>
+  <circle cx="314" cy="58" r="0.6" fill="#fff" opacity="0.45"/><circle cx="284" cy="52" r="0.5" fill="#fff" opacity="0.83"/><circle cx="377" cy="43" r="0.8" fill="#fff" opacity="0.77"/><circle cx="421" cy="8" r="1.1" fill="#fff" opacity="0.44"/><circle cx="430" cy="16" r="1.2" fill="#fff" opacity="0.59"/><circle cx="113" cy="5" r="1.7" fill="#fff" opacity="0.88"/><circle cx="77" cy="46" r="1.7" fill="#fff" opacity="0.41"/><circle cx="268" cy="57" r="1.3" fill="#fff" opacity="0.47"/><circle cx="109" cy="102" r="1.0" fill="#fff" opacity="0.44"/><circle cx="350" cy="34" r="0.6" fill="#fff" opacity="0.76"/><circle cx="225" cy="36" r="0.5" fill="#fff" opacity="0.86"/><circle cx="153" cy="92" r="1.1" fill="#fff" opacity="0.44"/><circle cx="386" cy="42" r="1.5" fill="#fff" opacity="0.69"/><circle cx="87" cy="23" r="1.0" fill="#fff" opacity="0.35"/><circle cx="30" cy="43" r="1.4" fill="#fff" opacity="0.69"/><circle cx="611" cy="34" r="1.0" fill="#fff" opacity="0.60"/><circle cx="281" cy="87" r="1.0" fill="#fff" opacity="0.56"/><circle cx="169" cy="24" r="1.4" fill="#fff" opacity="0.38"/><circle cx="173" cy="79" r="1.6" fill="#fff" opacity="0.88"/><circle cx="593" cy="89" r="1.4" fill="#fff" opacity="0.68"/><circle cx="355" cy="2" r="0.9" fill="#fff" opacity="0.51"/><circle cx="138" cy="41" r="1.4" fill="#fff" opacity="0.74"/><circle cx="171" cy="99" r="0.4" fill="#fff" opacity="0.52"/><circle cx="375" cy="46" r="0.5" fill="#fff" opacity="0.89"/><circle cx="292" cy="90" r="1.2" fill="#fff" opacity="0.58"/><circle cx="80" cy="82" r="1.7" fill="#fff" opacity="0.46"/><circle cx="16" cy="16" r="1.4" fill="#fff" opacity="0.72"/><circle cx="423" cy="90" r="0.7" fill="#fff" opacity="0.80"/><circle cx="108" cy="4" r="0.5" fill="#fff" opacity="0.31"/><circle cx="344" cy="86" r="1.6" fill="#fff" opacity="0.39"/><circle cx="316" cy="5" r="0.8" fill="#fff" opacity="0.59"/><circle cx="41" cy="37" r="0.7" fill="#fff" opacity="0.48"/><circle cx="506" cy="14" r="0.6" fill="#fff" opacity="0.30"/><circle cx="399" cy="9" r="1.0" fill="#fff" opacity="0.37"/><circle cx="306" cy="43" r="0.4" fill="#fff" opacity="0.75"/><circle cx="289" cy="76" r="0.9" fill="#fff" opacity="0.86"/><circle cx="459" cy="66" r="0.8" fill="#fff" opacity="0.52"/><circle cx="49" cy="91" r="0.5" fill="#fff" opacity="0.34"/><circle cx="119" cy="31" r="0.4" fill="#fff" opacity="0.66"/><circle cx="281" cy="39" r="1.2" fill="#fff" opacity="0.84"/><circle cx="338" cy="44" r="0.6" fill="#fff" opacity="0.84"/><circle cx="424" cy="52" r="1.7" fill="#fff" opacity="0.71"/><circle cx="293" cy="100" r="1.6" fill="#fff" opacity="0.55"/><circle cx="318" cy="73" r="1.5" fill="#fff" opacity="0.85"/><circle cx="349" cy="102" r="1.3" fill="#fff" opacity="0.80"/><circle cx="282" cy="8" r="1.8" fill="#fff" opacity="0.63"/><circle cx="417" cy="41" r="1.5" fill="#fff" opacity="0.77"/><circle cx="321" cy="46" r="1.6" fill="#fff" opacity="0.73"/><circle cx="33" cy="38" r="1.1" fill="#fff" opacity="0.89"/><circle cx="422" cy="16" r="1.3" fill="#fff" opacity="0.40"/><circle cx="128" cy="55" r="0.8" fill="#fff" opacity="0.31"/><circle cx="614" cy="53" r="0.4" fill="#fff" opacity="0.53"/><circle cx="118" cy="68" r="0.7" fill="#fff" opacity="0.74"/>
+  <circle cx="160" cy="230" r="121.00000000000001" fill="url(#tdirtbiketour-sunglow)"/>
+  <circle cx="160" cy="230" r="55" fill="url(#tdirtbiketour-sun)"/>
+  <rect y="230" width="640" height="170" fill="url(#tdirtbiketour-sea)"/>
+  <rect x="129.75" y="240" width="61" height="3" rx="2" fill="#FFD23F" opacity="0.55"/><rect x="133.05" y="255" width="54" height="3.6" rx="2" fill="#FFD23F" opacity="0.49"/><rect x="136.35" y="271" width="47" height="4.2" rx="2" fill="#FFD23F" opacity="0.43"/><rect x="139.65" y="286" width="41" height="4.8" rx="2" fill="#FFD23F" opacity="0.37"/><rect x="142.95" y="301" width="34" height="5.4" rx="2" fill="#FFD23F" opacity="0.31"/><rect x="146.25" y="317" width="28" height="6" rx="2" fill="#FFD23F" opacity="0.25"/><rect x="149.55" y="332" width="21" height="6.6" rx="2" fill="#FFD23F" opacity="0.19"/>
+    <path d="M0 260 L120 190 L220 230 L330 150 L440 210 L560 160 L640 200 L640 400 L0 400 Z" fill="#3A1460"/>
+    <path d="M0 320 L150 250 L280 290 L420 220 L640 280 L640 400 L0 400 Z" fill="#24093F"/>
+    <path d="M0 400 L0 360 Q200 300 360 320 Q520 340 640 300 L640 400 Z" fill="url(#tdirtbiketour-sand)"/>
+    <path d="M40 392 Q200 330 360 336 Q500 342 620 312" fill="none" stroke="#FFE3F2" stroke-opacity=".45" stroke-width="3" stroke-dasharray="10 8"/>
+    <g transform="translate(600 380) scale(-0.8 0.8)" fill="#0B0414">
+    <path d="M-7 0 C-4 -90 18 -200 46 -290 L58 -286 C34 -200 12 -100 9 0 Z"/>
+    <g transform="translate(52 -288)"><path d="M0 0 Q-46.1 -80.6 -112.8 -41.0 Q-48.4 -56.6 0 6 Z"/><path d="M0 0 Q-18.0 -83.1 -72.1 -72.1 Q-18.9 -59.1 0 6 Z"/><path d="M0 0 Q5.4 -72.7 -28.7 -78.9 Q5.6 -48.7 0 6 Z"/><path d="M0 0 Q48.7 -93.5 41.0 -112.8 Q51.1 -69.5 0 6 Z"/><path d="M0 0 Q55.5 -81.8 78.1 -65.6 Q58.2 -57.8 0 6 Z"/><path d="M0 0 Q46.0 -60.8 81.1 -21.7 Q48.3 -36.8 0 6 Z"/><path d="M0 0 Q50.2 -45.6 115.9 31.1 Q52.7 -21.6 0 6 Z"/><path d="M0 0 Q-56.6 -37.2 -95.8 34.9 Q-59.5 -13.2 0 6 Z"/><path d="M0 0 Q21.0 -66.0 -0.0 -84.0 Q22.0 -42.0 0 6 Z"/><circle cx="-6" cy="6" r="9"/><circle cx="8" cy="9" r="8"/></g>
+  </g>
+    <g transform="translate(250 200) scale(.85) rotate(-6 150 190)">
+<g>
+  <ellipse cx="152" cy="190" rx="150" ry="10" fill="#000" opacity=".45"/>
+  
+  <circle cx="64" cy="144" r="44" fill="none" stroke="#0B0414" stroke-width="13"/>
+  <circle cx="64" cy="144" r="47" fill="none" stroke="#2A1A3E" stroke-width="5" stroke-dasharray="6 6"/>
+  <circle cx="64" cy="144" r="36" fill="none" stroke="url(#tdirtbiketour-chrome)" stroke-width="3"/>
+  <line x1="64" y1="144" x2="100.0" y2="144.0" stroke="#B9C0D8" stroke-width="1.2"/><line x1="64" y1="144" x2="95.2" y2="162.0" stroke="#B9C0D8" stroke-width="1.2"/><line x1="64" y1="144" x2="82.0" y2="175.2" stroke="#B9C0D8" stroke-width="1.2"/><line x1="64" y1="144" x2="64.0" y2="180.0" stroke="#B9C0D8" stroke-width="1.2"/><line x1="64" y1="144" x2="46.0" y2="175.2" stroke="#B9C0D8" stroke-width="1.2"/><line x1="64" y1="144" x2="32.8" y2="162.0" stroke="#B9C0D8" stroke-width="1.2"/><line x1="64" y1="144" x2="28.0" y2="144.0" stroke="#B9C0D8" stroke-width="1.2"/><line x1="64" y1="144" x2="32.8" y2="126.0" stroke="#B9C0D8" stroke-width="1.2"/><line x1="64" y1="144" x2="46.0" y2="112.8" stroke="#B9C0D8" stroke-width="1.2"/><line x1="64" y1="144" x2="64.0" y2="108.0" stroke="#B9C0D8" stroke-width="1.2"/><line x1="64" y1="144" x2="82.0" y2="112.8" stroke="#B9C0D8" stroke-width="1.2"/><line x1="64" y1="144" x2="95.2" y2="126.0" stroke="#B9C0D8" stroke-width="1.2"/>
+  <circle cx="64" cy="144" r="7" fill="url(#tdirtbiketour-chrome)"/>
+  
+  <circle cx="240" cy="144" r="44" fill="none" stroke="#0B0414" stroke-width="13"/>
+  <circle cx="240" cy="144" r="47" fill="none" stroke="#2A1A3E" stroke-width="5" stroke-dasharray="6 6"/>
+  <circle cx="240" cy="144" r="36" fill="none" stroke="url(#tdirtbiketour-chrome)" stroke-width="3"/>
+  <line x1="240" y1="144" x2="276.0" y2="144.0" stroke="#B9C0D8" stroke-width="1.2"/><line x1="240" y1="144" x2="271.2" y2="162.0" stroke="#B9C0D8" stroke-width="1.2"/><line x1="240" y1="144" x2="258.0" y2="175.2" stroke="#B9C0D8" stroke-width="1.2"/><line x1="240" y1="144" x2="240.0" y2="180.0" stroke="#B9C0D8" stroke-width="1.2"/><line x1="240" y1="144" x2="222.0" y2="175.2" stroke="#B9C0D8" stroke-width="1.2"/><line x1="240" y1="144" x2="208.8" y2="162.0" stroke="#B9C0D8" stroke-width="1.2"/><line x1="240" y1="144" x2="204.0" y2="144.0" stroke="#B9C0D8" stroke-width="1.2"/><line x1="240" y1="144" x2="208.8" y2="126.0" stroke="#B9C0D8" stroke-width="1.2"/><line x1="240" y1="144" x2="222.0" y2="112.8" stroke="#B9C0D8" stroke-width="1.2"/><line x1="240" y1="144" x2="240.0" y2="108.0" stroke="#B9C0D8" stroke-width="1.2"/><line x1="240" y1="144" x2="258.0" y2="112.8" stroke="#B9C0D8" stroke-width="1.2"/><line x1="240" y1="144" x2="271.2" y2="126.0" stroke="#B9C0D8" stroke-width="1.2"/>
+  <circle cx="240" cy="144" r="7" fill="url(#tdirtbiketour-chrome)"/>
+  <path d="M64 144 L132 118 L140 126 L70 150 Z" fill="#2E1E44"/>
+  <path d="M232 140 L200 50 M246 136 L212 48" stroke="url(#tdirtbiketour-chrome)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M120 98 L172 100 L162 136 L126 132 Z" fill="#3A3550"/>
+  <path d="M128 106 L164 108 M130 116 L160 118 M131 126 L158 127" stroke="#5E5878" stroke-width="2"/>
+  <path d="M152 116 Q108 108 62 92 L58 100 Q104 118 150 126 Z" fill="url(#tdirtbiketour-chrome)"/>
+  <path d="M116 72 Q148 50 190 56 L214 78 L174 100 L130 96 Z" fill="url(#tdirtbiketour-red)"/>
+  <path d="M124 76 Q150 60 186 62" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="3"/>
+  <path d="M60 74 L166 64 L168 74 L64 84 Z" fill="#0B0414"/>
+  <path d="M14 70 L100 64 L104 74 L26 84 Z" fill="#F4F4FA"/>
+  <path d="M14 70 L100 64" stroke="#FF007F" stroke-width="2" filter="url(#tdirtbiketour-glow)"/>
+  <path d="M196 90 Q240 78 276 94 L268 100 Q240 88 202 98 Z" fill="#F4F4FA"/>
+  <path d="M206 44 L234 40" stroke="#0B0414" stroke-width="6" stroke-linecap="round"/>
+  <path d="M196 56 L214 50 L222 76 L204 80 Z" fill="#F4F4FA"/>
+  <circle cx="211" cy="64" r="5" fill="#00F3FF" filter="url(#tdirtbiketour-glow)"/>
+  <text x="150" y="88" font-family="Arial Black, Arial, sans-serif" font-size="13" font-weight="900" fill="#fff" opacity=".85">27</text>
+</g></g></svg>
