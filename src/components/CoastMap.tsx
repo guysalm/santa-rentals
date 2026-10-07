@@ -5,9 +5,26 @@ import { formatUSD } from "@/lib/money";
 import type { Locale, Tour } from "@/lib/types";
 import { COAST, MISSION_ROUTES, PLACES, TERRAIN } from "@/content/map";
 
+// Bright, flat daytime map palette (original artwork).
+const C = {
+  seaDeep: "#1F5FD0",
+  sea: "#2C86EE",
+  shallows: "#2BCBEF",
+  beach: "#F8E36A",
+  land: "#F3BE78",
+  forest: "#7CCB6F",
+  reserve: "#4FA65A",
+  town: "#A77BE2",
+  roadCasing: "#A3329A",
+  road: "#E655D2",
+  minor: "#FFFFFF",
+  river: "#2F7FE6",
+  label: "#141414",
+};
+
 /**
- * "Pick your mission": retro neon map of the Santa Teresa coast (original
- * artwork, inline SVG) with clickable area pins and one glowing route per tour.
+ * "Pick your mission": bright illustrated map of the Santa Teresa coast (original
+ * artwork, inline SVG) with clickable places and one dashed route per tour.
  * Hovering a mission in the list highlights its route (CSS :has, no JS).
  */
 export function CoastMap({ lang, dict, tours }: { lang: Locale; dict: Dictionary; tours: Tour[] }) {
@@ -17,146 +34,146 @@ export function CoastMap({ lang, dict, tours }: { lang: Locale; dict: Dictionary
     .join("");
 
   return (
-    <div className="coast-map grid items-start gap-8 lg:grid-cols-[1.35fr_1fr]">
+    <div className="coast-map grid items-start gap-10 lg:grid-cols-[1.35fr_1fr]">
       <style>{highlight}</style>
-      <figure className="relative lg:-rotate-1">
-        <div className="panel overflow-hidden p-0">
-        <svg viewBox="0 0 800 600" role="img" aria-labelledby="coast-map-title" className="block h-auto w-full">
-          <title id="coast-map-title">{`${dict.home.mapTitle} — Santa Teresa, Mal País, Montezuma, Cabo Blanco`}</title>
-          <defs>
-            <pattern id="cm-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M40 0H0V40" fill="none" stroke="#7FD8FF" strokeOpacity=".07" />
-            </pattern>
-            <pattern id="cm-trees" width="22" height="22" patternUnits="userSpaceOnUse">
-              <circle cx="5" cy="6" r="2.4" fill="#0B2A1E" fillOpacity=".55" />
-              <circle cx="16" cy="15" r="2" fill="#0B2A1E" fillOpacity=".45" />
-            </pattern>
-            <linearGradient id="cm-sea" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stopColor="#082035" />
-              <stop offset="1" stopColor="#040E1A" />
-            </linearGradient>
-            <linearGradient id="cm-land" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stopColor="#245A42" />
-              <stop offset=".6" stopColor="#17402F" />
-              <stop offset="1" stopColor="#0E2C20" />
-            </linearGradient>
-            <filter id="cm-glow" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur stdDeviation="3.5" result="b" />
-              <feMerge>
-                <feMergeNode in="b" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
+      {/* Tilted frame like the mockup */}
+      <figure className="relative lg:[transform:perspective(1600px)_rotateY(-9deg)_rotate(-2.5deg)]">
+        <div className="overflow-hidden rounded-xl border-[3px] border-cyan shadow-[0_0_0_1px_rgb(0_243_255/0.4),0_0_22px_rgb(0_243_255/0.6)]">
+          <svg viewBox="0 0 800 600" role="img" aria-labelledby="coast-map-title" className="block h-auto w-full">
+            <title id="coast-map-title">{`${dict.home.mapTitle} — Santa Teresa, Mal País, Montezuma, Cabo Blanco`}</title>
+            <defs>
+              <linearGradient id="cm-sea" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stopColor={C.seaDeep} />
+                <stop offset="1" stopColor={C.sea} />
+              </linearGradient>
+              <clipPath id="cm-landclip">
+                <path d={COAST.land} />
+              </clipPath>
+            </defs>
 
-          {/* Sea + grid */}
-          <rect width="800" height="600" fill="url(#cm-sea)" />
-          <rect width="800" height="600" fill="url(#cm-grid)" />
-          {[0, 1, 2].map((i) => (
-            <path key={i} d={COAST.land} fill="none" stroke="#7FD8FF" strokeOpacity={0.16 - i * 0.05} strokeWidth="1.5" strokeDasharray="14 10" transform={`translate(${-12 - i * 12} ${9 + i * 9})`} />
-          ))}
+            {/* Sea, turquoise shallows, yellow beach, land */}
+            <rect width="800" height="600" fill="url(#cm-sea)" />
+            <path d={COAST.land} fill="none" stroke={C.shallows} strokeWidth="52" strokeLinejoin="round" />
+            <path d={COAST.land} fill="none" stroke={C.beach} strokeWidth="18" strokeLinejoin="round" />
+            <path d={COAST.land} fill={C.land} />
 
-          {/* Land: sandy shore, jungle green, tree texture, hill contours, clean coastline */}
-          <path d={COAST.land} fill="#E9C27A" stroke="#E9C27A" strokeWidth="10" strokeLinejoin="round" />
-          <path d={COAST.land} fill="url(#cm-land)" />
-          <path d={COAST.land} fill="url(#cm-trees)" />
-          <path d={COAST.reserve} fill="#0A2A1C" opacity=".75" />
-          {[0.94, 0.88].map((s) => (
-            <path key={s} d={COAST.land} fill="none" stroke="#3E8A66" strokeOpacity=".5" transform={`translate(${800 * (1 - s) * 0.9} ${-8}) scale(${s})`} />
-          ))}
-          <path d={COAST.land} fill="none" stroke="#F6F1E2" strokeWidth="1.6" />
-
-          {/* Water labels */}
-          <text x="60" y="400" fill="#00F3FF" fillOpacity=".5" fontSize="22" fontStyle="italic" letterSpacing="8" fontFamily="var(--font-bebas), Impact, sans-serif" transform="rotate(-62 60 400)">
-            PACIFIC OCEAN
-          </text>
-          <text x="640" y="470" fill="#00F3FF" fillOpacity=".45" fontSize="16" fontStyle="italic" letterSpacing="5" fontFamily="var(--font-bebas), Impact, sans-serif" transform="rotate(-32 640 470)">
-            {lang === "es" ? "GOLFO DE NICOYA" : "GULF OF NICOYA"}
-          </text>
-
-          {/* Terrain detail */}
-          {TERRAIN.rivers.map((d) => (
-            <path key={d} d={d} fill="none" stroke="#5CC8FF" strokeWidth="2.4" strokeLinecap="round" opacity=".85" />
-          ))}
-          {TERRAIN.peaks.map((k) => (
-            <g key={`${k.x}-${k.y}`} transform={`translate(${k.x} ${k.y}) scale(${k.s})`}>
-              <path d="M-16 10 L0 -14 L16 10 Z" fill="#2D6B4E" stroke="#0B2A1E" strokeWidth="1.5" />
-              <path d="M0 -14 L-5 -6 L0 -8 L5 -6 Z" fill="#E7F5EC" />
+            <g clipPath="url(#cm-landclip)">
+              {TERRAIN.forests.map((d) => (
+                <path key={d} d={d} fill={C.forest} />
+              ))}
+              <path d={COAST.reserve} fill={C.reserve} />
+              {TERRAIN.towns.map(([x, y, w, h]) => (
+                <rect key={`${x}-${y}`} x={x} y={y} width={w} height={h} rx="2" fill={C.town} stroke="#7E55C0" strokeWidth="1" />
+              ))}
             </g>
-          ))}
-          {TERRAIN.palms.map((p) => (
-            <g key={`${p.x}-${p.y}`} transform={`translate(${p.x} ${p.y})`} stroke="#0B2A1E" strokeWidth="1.6" strokeLinecap="round" fill="none">
-              <path d="M0 8 C0 3 1 -2 3 -6" />
-              <path d="M3 -6 C-1 -9 -5 -8 -7 -5 M3 -6 C3 -10 6 -12 9 -11 M3 -6 C7 -8 10 -6 11 -3" />
-            </g>
-          ))}
-          {TERRAIN.trails.map((d) => (
-            <path key={d} d={d} fill="none" stroke="#FFD23F" strokeWidth="2.2" strokeDasharray="5 6" strokeLinecap="round" opacity=".9" />
-          ))}
 
-          {/* Roads */}
-          {COAST.roads.map((d) => (
-            <g key={d}>
-              <path d={d} fill="none" stroke="#2A1E00" strokeWidth="8" strokeLinecap="round" />
-              <path d={d} fill="none" stroke="#FFD23F" strokeWidth="4" strokeLinecap="round" filter="url(#cm-glow)" />
-            </g>
-          ))}
-
-          {/* Mission routes */}
-          {missions.map((t, i) => {
-            const r = MISSION_ROUTES[t.slug];
-            // Numbered badge (matches the list) at the marker spot or the route's end.
-            const [bx, by] = r.marker ? [r.marker.x, r.marker.y] : routeEnd(r.d);
-            return (
-              <g key={t.slug}>
-                <path d={r.d} fill="none" stroke={r.color} strokeWidth="7" strokeOpacity=".15" strokeLinecap="round" />
-                <path className={`route route-${t.slug} route-flow transition-all`} d={r.d} fill="none" stroke={r.color} strokeWidth="3" strokeLinecap="round" opacity=".95" filter="url(#cm-glow)" />
-                <a href={localePath(lang, `/tours/${t.slug}`)} aria-label={t.content[lang].title}>
-                  <circle cx={bx} cy={by} r="13" fill="#0D0418" stroke={r.color} strokeWidth="2.5" filter="url(#cm-glow)" />
-                  <text x={bx} y={by + 6} fontSize="17" textAnchor="middle" fill={r.color} fontFamily="var(--font-bebas), Impact, sans-serif">
-                    {i + 1}
-                  </text>
-                </a>
-              </g>
-            );
-          })}
-
-          {/* Pins */}
-          {PLACES.map((p) => {
-            const color = p.hq ? "#FF007F" : "#00F3FF";
-            const label = p.hq ? `${p.name} · ${dict.home.homeBase}` : p.name;
-            const lx = p.labelSide === "left" ? p.x - 14 : p.x + 14;
-            const anchor = p.labelSide === "left" ? "end" : "start";
-            const pin = (
-              <g className="transition-transform">
-                <path d={`M${p.x} ${p.y} c-7 -10 -12 -15 -12 -22 a12 12 0 1 1 24 0 c0 7 -5 12 -12 22z`} fill={p.hq ? "#FF007F" : "#0D0418"} stroke={color} strokeWidth="2.5" filter="url(#cm-glow)" />
-                <circle cx={p.x} cy={p.y - 22} r={p.hq ? 5 : 4} fill={p.hq ? "#fff" : color} />
-                <text x={lx} y={p.y - 16} textAnchor={anchor} fontSize={p.hq ? 19 : 15} letterSpacing="1.5" fill="#fff" stroke="#0D0418" strokeWidth="4" paintOrder="stroke" fontFamily="var(--font-bebas), Impact, sans-serif">
-                  {label.toUpperCase()}
-                </text>
-              </g>
-            );
-            return p.href ? (
-              <a key={p.id} href={localePath(lang, p.href)} aria-label={p.name} className="cursor-pointer [&:hover_path]:fill-pink">
-                {pin}
-              </a>
-            ) : (
-              <g key={p.id}>{pin}</g>
-            );
-          })}
-
-          {/* Compass */}
-          <g transform="translate(728 70)" fill="none" stroke="#00F3FF" strokeWidth="2" filter="url(#cm-glow)">
-            <circle r="30" strokeOpacity=".5" />
-            <path d="M0 -26 L7 0 L0 26 L-7 0 Z" fill="#FF007F" stroke="#FF007F" />
-            <text y="-36" textAnchor="middle" fill="#00F3FF" stroke="none" fontSize="14" fontFamily="var(--font-bebas), Impact, sans-serif">
-              N
+            {/* Water labels */}
+            <text x="60" y="400" fill="#fff" fillOpacity=".75" fontSize="22" fontStyle="italic" letterSpacing="8" fontFamily="var(--font-anton-face), Impact, sans-serif" transform="rotate(-62 60 400)">
+              PACIFIC OCEAN
             </text>
-          </g>
-          <text x="16" y="588" fill="#C9E6D8" fillOpacity=".6" fontSize="11" fontFamily="var(--font-inter), sans-serif">
-            {dict.home.mapNote}
-          </text>
-        </svg>
+            <text x="640" y="470" fill="#fff" fillOpacity=".7" fontSize="16" fontStyle="italic" letterSpacing="5" fontFamily="var(--font-anton-face), Impact, sans-serif" transform="rotate(-32 640 470)">
+              {lang === "es" ? "GOLFO DE NICOYA" : "GULF OF NICOYA"}
+            </text>
+
+            {/* Rivers, hills, palms */}
+            {TERRAIN.rivers.map((d) => (
+              <path key={d} d={d} fill="none" stroke={C.river} strokeWidth="3.2" strokeLinecap="round" />
+            ))}
+            {TERRAIN.peaks.map((k) => (
+              <g key={`${k.x}-${k.y}`} transform={`translate(${k.x} ${k.y}) scale(${k.s})`}>
+                <path d="M-15 9 L0 -13 L15 9 Z" fill="#3E8E4C" />
+                <path d="M0 -13 L-5 -6 L0 -8 L5 -6 Z" fill="#fff" />
+              </g>
+            ))}
+            {TERRAIN.palms.map((p) => (
+              <g key={`${p.x}-${p.y}`} transform={`translate(${p.x} ${p.y})`} stroke="#2E6B3A" strokeWidth="1.8" strokeLinecap="round" fill="none">
+                <path d="M0 8 C0 3 1 -2 3 -6" />
+                <path d="M3 -6 C-1 -9 -5 -8 -7 -5 M3 -6 C3 -10 6 -12 9 -11 M3 -6 C7 -8 10 -6 11 -3" />
+              </g>
+            ))}
+
+            {/* Minor roads (white) and main roads (magenta) */}
+            {TERRAIN.trails.map((d) => (
+              <path key={d} d={d} fill="none" stroke={C.minor} strokeWidth="3" strokeLinecap="round" />
+            ))}
+            {COAST.roads.map((d) => (
+              <g key={d}>
+                <path d={d} fill="none" stroke={C.roadCasing} strokeWidth="10" strokeLinecap="round" />
+                <path d={d} fill="none" stroke={C.road} strokeWidth="6.5" strokeLinecap="round" />
+              </g>
+            ))}
+
+            {/* Mission routes (dashed, animated) + numbered badges */}
+            {missions.map((t, i) => {
+              const r = MISSION_ROUTES[t.slug];
+              const [bx, by] = r.marker ? [r.marker.x, r.marker.y] : routeEnd(r.d);
+              return (
+                <g key={t.slug}>
+                  <path d={r.d} fill="none" stroke="#fff" strokeWidth="6" strokeLinecap="round" opacity=".85" />
+                  <path className={`route route-${t.slug} route-flow transition-all`} d={r.d} fill="none" stroke={r.color} strokeWidth="3.5" strokeLinecap="round" />
+                  <a href={localePath(lang, `/tours/${t.slug}`)} aria-label={t.content[lang].title}>
+                    <circle cx={bx} cy={by} r="13" fill={C.label} stroke={r.color} strokeWidth="3" />
+                    <text x={bx} y={by + 6} fontSize="16" textAnchor="middle" fill="#fff" fontFamily="var(--font-anton-face), Impact, sans-serif">
+                      {i + 1}
+                    </text>
+                  </a>
+                </g>
+              );
+            })}
+
+            {/* Places: dot + bold black label (HQ gets a pink pin) */}
+            {PLACES.map((p) => {
+              const label = p.hq ? `${p.name} · ${dict.home.homeBase}` : p.name;
+              const lx = p.labelSide === "left" ? p.x - 12 : p.x + 12;
+              const anchor = p.labelSide === "left" ? "end" : "start";
+              const place = (
+                <g>
+                  {p.hq ? (
+                    <>
+                      <path d={`M${p.x} ${p.y} c-7 -10 -12 -15 -12 -22 a12 12 0 1 1 24 0 c0 7 -5 12 -12 22z`} fill="#FF007F" stroke="#fff" strokeWidth="2.5" />
+                      <circle cx={p.x} cy={p.y - 22} r="5" fill="#fff" />
+                    </>
+                  ) : (
+                    <circle cx={p.x} cy={p.y} r="6" fill="#fff" stroke={C.label} strokeWidth="3" />
+                  )}
+                  <text
+                    x={lx}
+                    y={p.hq ? p.y - 16 : p.y + 6}
+                    textAnchor={anchor}
+                    fontSize={p.hq ? 21 : 16}
+                    letterSpacing="1"
+                    fill={C.label}
+                    stroke="#fff"
+                    strokeWidth="4"
+                    paintOrder="stroke"
+                    fontFamily="var(--font-anton-face), Impact, sans-serif"
+                  >
+                    {label.toUpperCase()}
+                  </text>
+                </g>
+              );
+              return p.href ? (
+                <a key={p.id} href={localePath(lang, p.href)} aria-label={p.name} className="cursor-pointer hover:opacity-80">
+                  {place}
+                </a>
+              ) : (
+                <g key={p.id}>{place}</g>
+              );
+            })}
+
+            {/* Compass */}
+            <g transform="translate(728 70)">
+              <circle r="28" fill="#fff" fillOpacity=".85" stroke={C.label} strokeWidth="2" />
+              <path d="M0 -22 L6 0 L0 22 L-6 0 Z" fill="#FF007F" />
+              <path d="M0 0 L6 0 L0 22 Z" fill={C.label} />
+              <text y="-34" textAnchor="middle" fill={C.label} fontSize="15" fontFamily="var(--font-anton-face), Impact, sans-serif">
+                N
+              </text>
+            </g>
+            <text x="16" y="588" fill="#fff" fillOpacity=".8" fontSize="11" fontFamily="var(--font-inter), sans-serif">
+              {dict.home.mapNote}
+            </text>
+          </svg>
         </div>
         {/* Angled green banner breaking out of the frame's bottom-right corner */}
         <p className="absolute -bottom-5 -right-2 rotate-[-6deg] rounded-md border-2 border-black bg-gradient-to-b from-[#3BE07A] to-[#16A34A] px-5 py-1.5 font-anton text-2xl uppercase tracking-wider text-[#04140A] shadow-[0_0_18px_rgb(34_197_94/0.65),4px_4px_0_#000] sm:-right-6 sm:text-3xl">
@@ -185,7 +202,7 @@ export function CoastMap({ lang, dict, tours }: { lang: Locale; dict: Dictionary
                       {dict.categories[t.category].name} · {t.overnight ? dict.common.overnight : `${t.durationHours} ${dict.common.hours}`}
                     </span>
                   </span>
-                  <span className="price-pink text-xl">{formatUSD(t.priceCents)}</span>
+                  <span className="price-cyan text-xl">{formatUSD(t.priceCents)}</span>
                 </Link>
               </li>
             );

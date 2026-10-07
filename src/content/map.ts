@@ -18,6 +18,21 @@ export const COAST = {
 
 /** Terrain detail for the adventure-map look (decorative, approximate). */
 export const TERRAIN = {
+  // Forest zones (drawn clipped to the land)
+  forests: [
+    "M290 0 H800 V226 C740 252 680 278 634 302 C600 262 524 206 446 188 C384 176 330 120 290 0 Z",
+    "M356 262 C398 240 446 288 436 330 C426 372 384 384 360 352 C338 322 330 282 356 262 Z",
+    "M470 300 C500 290 528 318 520 350 C512 380 486 392 470 372 C456 352 452 314 470 300 Z",
+  ],
+  // Town blocks [x, y, w, h]
+  towns: [
+    [252, 236, 16, 10], [270, 242, 12, 12], [262, 250, 10, 8], [244, 246, 8, 8],
+    [318, 324, 12, 10], [334, 332, 10, 8],
+    [444, 236, 14, 10], [460, 244, 10, 10],
+    [556, 314, 14, 10], [572, 322, 10, 10],
+    [488, 424, 12, 8],
+    [176, 70, 10, 8],
+  ] as [number, number, number, number][],
   rivers: [
     // Bongo River, north of Manzanillo
     "M262 20 C240 34 214 30 196 44 C182 54 166 56 150 54",
@@ -95,8 +110,8 @@ export const MISSION_ROUTES: Record<string, { color: string; d: string; marker?:
   },
   "ridge-runner-enduro-tour": {
     color: "#B26BFF",
-    d: "M266 256 C300 230 330 200 368 196 C402 194 412 226 392 246 C370 266 320 268 288 262",
-    marker: { x: 372, y: 186 },
+    d: "M266 256 C300 226 340 168 392 158 C420 160 424 220 396 244 C372 266 320 268 288 262",
+    marker: { x: 398, y: 150 },
   },
   "peninsula-enduro-full-day": {
     color: "#7A5CFF",
