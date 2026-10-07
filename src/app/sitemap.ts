@@ -14,6 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "/dirt-bike-rental-santa-teresa", priority: 0.9 },
     { path: "/tours", priority: 0.9 },
     { path: "/fleet", priority: 0.8 },
+    { path: "/gallery", priority: 0.5 },
     { path: "/book", priority: 0.8 },
     ...models.map((m) => ({ path: `/fleet/${m.slug}`, priority: 0.8 })),
     ...Object.values(en.categories).map((c) => ({ path: `/tours/${c.slug}`, priority: 0.8 })),

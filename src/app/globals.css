@@ -5,8 +5,8 @@
    artwork, logos and fonts are original or open-licensed (OFL Google Fonts);
    no third-party game, film or brand assets are used. */
 @theme {
-  --color-night: #0d0418;
-  --color-night-2: #160828;
+  --color-night: #050505; /* pitch black page background */
+  --color-night-2: #0c0a12;
   --color-plum: #24103f;
   --color-plum-2: #3a1a63;
   --color-pink: #ff007f; /* neon pink — buttons, active states */
@@ -21,6 +21,7 @@
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-bebas), Impact, "Arial Narrow", sans-serif;
   --font-script: var(--font-yellowtail), "Brush Script MT", cursive;
+  --font-anton: var(--font-anton-face), Impact, "Arial Narrow", sans-serif;
 
   --shadow-neon-cyan: 0 0 0 1px rgb(0 243 255 / 0.35), 0 0 14px rgb(0 243 255 / 0.45), inset 0 0 14px rgb(0 243 255 / 0.12);
   --shadow-neon-pink: 0 0 0 1px rgb(255 0 127 / 0.35), 0 0 16px rgb(255 0 127 / 0.5), inset 0 0 14px rgb(255 0 127 / 0.14);
@@ -32,10 +33,7 @@
     scroll-behavior: smooth;
   }
   body {
-    background:
-      radial-gradient(1200px 600px at 85% -10%, rgb(255 0 127 / 0.12), transparent 60%),
-      radial-gradient(900px 500px at -10% 30%, rgb(0 243 255 / 0.07), transparent 60%),
-      var(--color-night);
+    background: var(--color-night);
     color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -79,7 +77,7 @@
   }
   /* Poster headline: bold condensed italic with a pink glow */
   .headline {
-    font-family: var(--font-display);
+    font-family: var(--font-anton);
     font-style: italic;
     transform: skewX(-6deg);
     color: #fff;

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bebas_Neue, Inter, Yellowtail } from "next/font/google";
+import { Anton, Bebas_Neue, Inter, Yellowtail } from "next/font/google";
 import "../globals.css";
 import { getDictionary } from "@/dictionaries";
 import { isLocale, LOCALES } from "@/lib/i18n";
@@ -13,6 +13,7 @@ import { AffiliateBanner } from "@/components/AffiliateBanner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const bebas = Bebas_Neue({ subsets: ["latin"], weight: "400", variable: "--font-bebas", display: "swap" });
+const anton = Anton({ subsets: ["latin"], weight: "400", variable: "--font-anton-face", display: "swap" });
 const yellowtail = Yellowtail({ subsets: ["latin"], weight: "400", variable: "--font-yellowtail", display: "swap" });
 
 export const metadata: Metadata = {
@@ -34,7 +35,7 @@ export default async function LangLayout({ children, params }: LayoutProps<"/[la
   const lang = isLocale(raw) ? raw : "en";
   const dict = getDictionary(lang);
   return (
-    <html lang={lang === "es" ? "es-CR" : "en"} className={`${inter.variable} ${bebas.variable} ${yellowtail.variable}`}>
+    <html lang={lang === "es" ? "es-CR" : "en"} className={`${inter.variable} ${bebas.variable} ${yellowtail.variable} ${anton.variable}`}>
       <body>
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:bg-pink focus:px-4 focus:py-2">
           Skip to content

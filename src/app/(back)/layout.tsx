@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Bebas_Neue, Inter, Yellowtail } from "next/font/google";
+import { Anton, Bebas_Neue, Inter, Yellowtail } from "next/font/google";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const bebas = Bebas_Neue({ subsets: ["latin"], weight: "400", variable: "--font-bebas", display: "swap" });
+const anton = Anton({ subsets: ["latin"], weight: "400", variable: "--font-anton-face", display: "swap" });
 const yellowtail = Yellowtail({ subsets: ["latin"], weight: "400", variable: "--font-yellowtail", display: "swap" });
 
 // Root layout for the back office (admin, agent dashboard, login). Never indexed.
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function BackLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${inter.variable} ${bebas.variable} ${yellowtail.variable}`}>
+    <html lang="en" className={`${inter.variable} ${bebas.variable} ${yellowtail.variable} ${anton.variable}`}>
       <body className="min-h-screen">{children}</body>
     </html>
   );

@@ -5,7 +5,7 @@ export const SITE = {
   legalName: "Santa Rentals",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://santa.rentals",
   email: "hola@santa.rentals",
-  phone: "+506 0000 0000", // TODO real number
+  phone: "+500-6888-8068", // ⚠ as requested — Costa Rica numbers start +506; confirm before launch
   whatsapp: "50600000000", // TODO digits only, used in wa.me links
   instagram: "https://instagram.com/santa.rentals", // TODO confirm handle
   address: {

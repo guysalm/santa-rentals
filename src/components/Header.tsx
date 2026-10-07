@@ -13,13 +13,13 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const links = [
     { href: p("/"), label: dict.nav.home },
     { href: p("/fleet"), label: dict.nav.fleet },
-    { href: p("/tours"), label: dict.nav.tours },
+    { href: p("/tours"), label: dict.nav.mapRoutes },
     { href: p("/book"), label: dict.nav.booking },
-    { href: p("/become-an-affiliate"), label: dict.nav.affiliate },
+    { href: p("/gallery"), label: dict.nav.gallery },
     { href: p("/contact"), label: dict.nav.contact },
   ];
   const call = (
-    <a href={`tel:${SITE.phone.replace(/\s/g, "")}`} className="btn btn-call">
+    <a href={`tel:${SITE.phone.replace(/[\s-]/g, "")}`} className="btn btn-call !text-lg !uppercase">
       {dict.nav.call}: {SITE.phone}
     </a>
   );
