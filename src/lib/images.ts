@@ -13,4 +13,5 @@ export const tourImage = (t: Pick<Tour, "images" | "category">) => t.images[0] ?
 /** Local SVG illustrations skip the image optimizer (it doesn't rasterize SVG). */
 export const isIllustration = (src: string) => src.endsWith(".svg");
 
-export const HERO_IMAGE = "/images/hero-sunset.svg";
+/** Hero background photo (owner-supplied). */
+export const HERO_IMAGE = "/images/hero-beach.jpg";

@@ -7,8 +7,6 @@ import { join } from "node:path";
 const PINK = "#FF007F";
 const CYAN = "#00F3FF";
 const SUN = "#FFD23F";
-const ORANGE = "#FF6A2A";
-const NIGHT = "#12061F";
 const INK = "#0B0414";
 
 // ───────────── shared defs ─────────────
@@ -195,40 +193,6 @@ function sunsetBackdrop(id: string, w: number, h: number, hy: number, sunX: numb
 const svg = (w: number, h: number, body: string, title: string) =>
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${title}"><title>${title}</title>${body}</svg>\n`;
 
-// ───────────── hero: sunset beach with quad + dirt bike ─────────────
-function hero() {
-  const id = "h";
-  const W = 1600;
-  const H = 900;
-  const hy = 520;
-  return svg(
-    W,
-    H,
-    `${defs(id)}
-    ${sunsetBackdrop(id, W, H, hy, 1120, 120)}
-    <path d="M0 520 L0 300 L90 260 L170 300 L260 250 L380 330 L470 380 L540 440 L620 520 Z" fill="#2A0E44"/>
-    <path d="M0 520 L0 360 L110 330 L210 370 L330 360 L430 430 L520 520 Z" fill="#1C0833"/>
-    <path d="M1300 520 L1380 470 L1460 480 L1540 440 L1600 450 L1600 520 Z" fill="#2A0E44"/>
-    <g fill="none" stroke="#FFD9F0" stroke-linecap="round" opacity=".55">
-      <path d="M560 600 Q760 585 980 604 T1460 600" stroke-width="3"/>
-      <path d="M380 660 Q620 640 860 668 T1600 650" stroke-width="4"/>
-    </g>
-    <path d="M0 900 L0 640 Q240 600 520 650 Q820 700 1100 760 Q1300 800 1600 790 L1600 900 Z" fill="url(#${id}-sand)"/>
-    <path d="M0 640 Q240 600 520 650 Q820 700 1100 760 Q1300 800 1600 790" fill="none" stroke="#FFE3F2" stroke-opacity=".6" stroke-width="5"/>
-    <path d="M120 800 Q360 760 620 790 M200 850 Q420 820 700 845" fill="none" stroke="#2A0E2E" stroke-opacity=".5" stroke-width="5" stroke-linecap="round"/>
-    <g transform="translate(560 520) scale(1.25)">${dirtbike(id)}</g>
-    <g transform="translate(230 560) scale(1.75)">${atv(id)}</g>
-    ${palm(330, 640, 420, true, "#0E0420")}
-    ${palm(60, 900, 760, false)}
-    ${palm(1530, 900, 700, true)}
-    ${palm(1430, 840, 520, false)}
-    <path d="M0 900 L0 760 Q60 730 110 770 Q150 720 210 780 Q260 760 300 820 L330 900 Z" fill="${INK}"/>
-    <path d="M1600 900 L1600 790 Q1540 760 1500 800 Q1460 770 1420 820 L1390 900 Z" fill="${INK}"/>
-    `,
-    "Illustration: ATV and dirt bike on a Santa Teresa beach at sunset",
-  );
-}
-
 // ───────────── fleet card images ─────────────
 function vehicleCard(kind: "atv" | "dirtbike" | "scooter") {
   const id = `v${kind}`;
@@ -353,7 +317,6 @@ function tourScene(kind: "atv-tour" | "dirt-bike-tour" | "camping" | "day-tour")
 const out = join(__dirname, "..", "public", "images");
 mkdirSync(join(out, "vehicles"), { recursive: true });
 mkdirSync(join(out, "tours"), { recursive: true });
-writeFileSync(join(out, "hero-sunset.svg"), hero());
 for (const k of ["atv", "dirtbike", "scooter"] as const) {
   writeFileSync(join(out, "vehicles", `${k}.svg`), vehicleCard(k));
   writeFileSync(join(out, "vehicles", `${k}-card.svg`), vehicleCardCompact(k));
