@@ -2,19 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Dictionary } from "@/dictionaries";
 import { localePath } from "@/lib/i18n";
-import { isIllustration, vehicleImage } from "@/lib/images";
+import { isIllustration, vehicleThumb } from "@/lib/images";
 import { formatUSD } from "@/lib/money";
 import type { Locale, VehicleModel } from "@/lib/types";
 
 // Horizontal fleet card: photo left, specs + price + "Book now" right.
 export function VehicleCard({ lang, dict, model }: { lang: Locale; dict: Dictionary; model: VehicleModel }) {
   const title = `${model.brand} ${model.name}`;
-  const img = vehicleImage(model);
+  const img = vehicleThumb(model);
   const specs = [model.engineCc ? `${model.engineCc}cc` : null, dict.common[model.transmission], `${model.seats} ${dict.common.seats.toLowerCase()}`].filter(Boolean).join(" · ");
   return (
     <article className="panel card-hover flex min-h-44 overflow-hidden">
       <Link href={localePath(lang, `/fleet/${model.slug}`)} className="relative w-[44%] shrink-0 overflow-hidden" tabIndex={-1} aria-hidden>
-        <Image src={img} alt="" fill unoptimized={isIllustration(img)} sizes="(min-width:1024px) 15vw, 45vw" className="object-cover transition-transform duration-300 hover:scale-105" />
+        <Image src={img} alt="" fill unoptimized={isIllustration(img)} sizes="(min-width:1024px) 15vw, 45vw" className="object-cover object-bottom transition-transform duration-300 hover:scale-105" />
         <span className="chip absolute left-2 top-2 bg-night/80 !text-xs text-cyan">{dict.types[model.type]}</span>
       </Link>
       <div className="flex min-w-0 flex-1 flex-col gap-1 border-l-2 border-cyan/50 p-4">

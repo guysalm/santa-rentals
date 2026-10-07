@@ -10,7 +10,7 @@ export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const h = dict.home;
   return (
     <section className="relative isolate overflow-hidden">
-      <Image src={HERO_IMAGE} alt="" fill priority unoptimized sizes="100vw" className="-z-20 object-cover object-[30%_50%]" />
+      <Image src={HERO_IMAGE} alt="" fill priority unoptimized sizes="100vw" className="-z-20 object-cover object-[30%_85%]" />
       {/* Darken the right side so the headline stays readable */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-night/40 via-transparent to-night/70 lg:bg-gradient-to-l lg:from-night/75 lg:via-night/25 lg:to-transparent" aria-hidden />
 

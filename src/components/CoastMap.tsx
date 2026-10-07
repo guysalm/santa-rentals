@@ -76,20 +76,20 @@ export function CoastMap({ lang, dict, tours }: { lang: Locale; dict: Dictionary
           ))}
 
           {/* Mission routes */}
-          {missions.map((t) => {
+          {missions.map((t, i) => {
             const r = MISSION_ROUTES[t.slug];
+            // Numbered badge (matches the list) at the marker spot or the route's end.
+            const [bx, by] = r.marker ? [r.marker.x, r.marker.y] : routeEnd(r.d);
             return (
               <g key={t.slug}>
                 <path d={r.d} fill="none" stroke={r.color} strokeWidth="9" strokeOpacity=".18" strokeLinecap="round" />
                 <path className={`route route-${t.slug} route-flow transition-all`} d={r.d} fill="none" stroke={r.color} strokeWidth="4" strokeLinecap="round" opacity=".9" filter="url(#cm-glow)" />
-                {r.marker && (
-                  <a href={localePath(lang, `/tours/${t.slug}`)} aria-label={t.content[lang].title}>
-                    <circle cx={r.marker.x} cy={r.marker.y} r="15" fill="#0D0418" stroke={r.color} strokeWidth="2.5" filter="url(#cm-glow)" />
-                    <text x={r.marker.x} y={r.marker.y + 5} fontSize="15" textAnchor="middle">
-                      {r.marker.icon}
-                    </text>
-                  </a>
-                )}
+                <a href={localePath(lang, `/tours/${t.slug}`)} aria-label={t.content[lang].title}>
+                  <circle cx={bx} cy={by} r="13" fill="#0D0418" stroke={r.color} strokeWidth="2.5" filter="url(#cm-glow)" />
+                  <text x={bx} y={by + 6} fontSize="17" textAnchor="middle" fill={r.color} fontFamily="var(--font-bebas), Impact, sans-serif">
+                    {i + 1}
+                  </text>
+                </a>
               </g>
             );
           })}
@@ -141,7 +141,7 @@ export function CoastMap({ lang, dict, tours }: { lang: Locale; dict: Dictionary
       <div>
         <p className="mb-4 text-muted">{dict.home.mapLead}</p>
         <ul className="space-y-3">
-          {missions.map((t) => {
+          {missions.map((t, i) => {
             const r = MISSION_ROUTES[t.slug];
             return (
               <li key={t.slug} data-m={t.slug}>
@@ -150,7 +150,9 @@ export function CoastMap({ lang, dict, tours }: { lang: Locale; dict: Dictionary
                   className="panel card-hover flex items-center gap-4 px-4 py-3"
                   style={{ borderColor: r.color, boxShadow: `0 0 12px ${r.color}55, inset 0 0 10px ${r.color}22` }}
                 >
-                  <span className="h-3 w-3 shrink-0 rounded-full" style={{ background: r.color, boxShadow: `0 0 10px ${r.color}` }} aria-hidden />
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border-2 font-display text-lg" style={{ borderColor: r.color, color: r.color, boxShadow: `0 0 10px ${r.color}` }} aria-hidden>
+                    {i + 1}
+                  </span>
                   <span className="min-w-0 flex-1">
                     <span className="block truncate font-display text-xl tracking-wide">{t.content[lang].title}</span>
                     <span className="text-xs text-muted">
@@ -166,4 +168,10 @@ export function CoastMap({ lang, dict, tours }: { lang: Locale; dict: Dictionary
       </div>
     </div>
   );
+}
+
+/** Last coordinate pair of an SVG path (where a route ends). */
+function routeEnd(d: string): [number, number] {
+  const nums = d.match(/-?\d+(\.\d+)?/g)!.map(Number);
+  return [nums[nums.length - 2], nums[nums.length - 1]];
 }

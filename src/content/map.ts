@@ -40,43 +40,45 @@ export const PLACES: MapPlace[] = [
 ];
 
 /** Neon route per tour slug (only routes whose tour exists are drawn). */
-export const MISSION_ROUTES: Record<string, { color: string; d: string; marker?: { x: number; y: number; icon: string } }> = {
+export const MISSION_ROUTES: Record<string, { color: string; d: string; marker?: { x: number; y: number } }> = {
   "montezuma-waterfall-atv-tour": {
     color: "#FF007F",
     d: "M248 224 C256 238 262 248 266 256 C318 252 392 240 452 252 C500 264 536 302 566 334",
-    marker: { x: 590, y: 318, icon: "💧" },
+    marker: { x: 590, y: 318 },
   },
   "cabo-blanco-sunset-atv-ride": {
     color: "#FF8A2A",
     d: "M248 224 C262 250 290 296 324 342 C346 374 372 416 404 448",
-    marker: { x: 400, y: 462, icon: "🌅" },
+    marker: { x: 372, y: 436 },
   },
   "jungle-to-coast-full-day-atv": {
     color: "#00F3FF",
     d: "M254 230 C320 262 396 252 446 262 C492 274 528 306 560 342 C540 380 516 410 498 436 C470 400 462 340 452 262",
+    marker: { x: 532, y: 388 },
   },
   "ridge-runner-enduro-tour": {
     color: "#B26BFF",
     d: "M266 256 C300 230 330 200 368 196 C402 194 412 226 392 246 C370 266 320 268 288 262",
-    marker: { x: 372, y: 186, icon: "⛰" },
+    marker: { x: 372, y: 186 },
   },
   "peninsula-enduro-full-day": {
     color: "#7A5CFF",
     d: "M248 224 C300 170 380 140 470 160 C540 176 600 230 620 300 C600 330 584 334 566 334",
+    marker: { x: 618, y: 272 },
   },
   "hidden-beaches-day-tour": {
     color: "#FFD23F",
     d: "M248 224 C238 204 226 186 214 162 C200 136 186 110 168 82",
-    marker: { x: 150, y: 120, icon: "🏝" },
+    marker: { x: 150, y: 120 },
   },
   "bongo-river-manzanillo-day-tour": {
     color: "#3CF2A6",
     d: "M214 162 C198 132 184 104 168 82 C156 56 146 30 138 8",
-    marker: { x: 176, y: 30, icon: "🐊" },
+    marker: { x: 176, y: 30 },
   },
   "beach-camp-overnight": {
     color: "#FF6FB5",
     d: "M248 224 C236 200 222 176 206 150",
-    marker: { x: 186, y: 150, icon: "⛺" },
+    marker: { x: 186, y: 150 },
   },
 };

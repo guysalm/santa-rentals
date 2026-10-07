@@ -236,8 +236,11 @@ function vehicleCard(kind: "atv" | "dirtbike" | "scooter") {
   const H = 420;
   const hy = 210;
   const v = kind === "atv" ? atv(id) : kind === "dirtbike" ? dirtbike(id) : scooter(id);
-  const scale = kind === "scooter" ? 1.8 : 1.6;
-  const vx = kind === "scooter" ? 50 : 80;
+  // Keep the whole vehicle inside the central 420×420 square so it survives both
+  // the near-square fleet-card crop and the 4:3 detail-page crop.
+  const scale = kind === "scooter" ? 1.45 : 1.3;
+  const centerX = kind === "scooter" ? 150 : kind === "atv" ? 155 : 152; // vehicle's own horizontal center
+  const vx = Math.round(W / 2 - centerX * scale);
   return svg(
     W,
     H,
@@ -248,7 +251,32 @@ function vehicleCard(kind: "atv" | "dirtbike" | "scooter") {
     <path d="M0 290 Q200 262 380 280 Q520 292 640 300" fill="none" stroke="#FFE3F2" stroke-opacity=".55" stroke-width="3"/>
     ${palm(600, 330, 300, true)}
     ${palm(30, 300, 230, false, "#1C0833")}
-    <g transform="translate(${vx} ${420 - 190 * scale - 6}) scale(${scale})">${v}</g>`,
+    <g transform="translate(${vx} ${410 - 190 * scale}) scale(${scale})">${v}</g>`,
+    kind === "atv" ? "Illustration: quad bike (ATV)" : kind === "dirtbike" ? "Illustration: dirt bike" : "Illustration: scooter",
+  );
+}
+
+/** Narrow version for the fleet cards' portrait-ish image column (vehicle fully in frame). */
+function vehicleCardCompact(kind: "atv" | "dirtbike" | "scooter") {
+  const id = `c${kind}`;
+  const W = 360;
+  const H = 440;
+  const hy = 230;
+  const v = kind === "atv" ? atv(id) : kind === "dirtbike" ? dirtbike(id) : scooter(id);
+  const scale = kind === "scooter" ? 1.05 : 0.95;
+  const centerX = kind === "scooter" ? 150 : kind === "atv" ? 155 : 152;
+  const vx = Math.round(W / 2 - centerX * scale);
+  return svg(
+    W,
+    H,
+    `${defs(id)}
+    ${sunsetBackdrop(id, W, H, hy, 250, 48)}
+    <path d="M0 ${hy} L0 170 L60 150 L120 180 L170 ${hy} Z" fill="#2A0E44"/>
+    <path d="M0 440 L0 310 Q120 290 220 300 Q300 306 360 312 L360 440 Z" fill="url(#${id}-sand)"/>
+    <path d="M0 310 Q120 290 220 300 Q300 306 360 312" fill="none" stroke="#FFE3F2" stroke-opacity=".55" stroke-width="3"/>
+    ${palm(335, 330, 240, true)}
+    ${palm(20, 310, 180, false, "#1C0833")}
+    <g transform="translate(${vx} ${425 - 190 * scale}) scale(${scale})">${v}</g>`,
     kind === "atv" ? "Illustration: quad bike (ATV)" : kind === "dirtbike" ? "Illustration: dirt bike" : "Illustration: scooter",
   );
 }
@@ -326,6 +354,9 @@ const out = join(__dirname, "..", "public", "images");
 mkdirSync(join(out, "vehicles"), { recursive: true });
 mkdirSync(join(out, "tours"), { recursive: true });
 writeFileSync(join(out, "hero-sunset.svg"), hero());
-for (const k of ["atv", "dirtbike", "scooter"] as const) writeFileSync(join(out, "vehicles", `${k}.svg`), vehicleCard(k));
+for (const k of ["atv", "dirtbike", "scooter"] as const) {
+  writeFileSync(join(out, "vehicles", `${k}.svg`), vehicleCard(k));
+  writeFileSync(join(out, "vehicles", `${k}-card.svg`), vehicleCardCompact(k));
+}
 for (const k of ["atv-tour", "dirt-bike-tour", "camping", "day-tour"] as const) writeFileSync(join(out, "tours", `${k}.svg`), tourScene(k));
 console.log("art written to public/images");
