@@ -30,6 +30,7 @@ export async function GET(request: NextRequest, ctx: RouteContext<"/a/[slug]">) 
   const res = NextResponse.redirect(home);
   // Last touch wins: a new agent's tag replaces the previous attribution.
   res.cookies.set(AFF_COOKIE, aff.id, { httpOnly: true, secure: request.nextUrl.protocol === "https:", sameSite: "lax", maxAge, path: "/" });
-  res.cookies.set(AFF_INFO_COOKIE, encodeURIComponent(`${aff.full_name.split(" ")[0]}|${Number(aff.customer_discount)}`), { sameSite: "lax", maxAge, path: "/" });
+  // Next URL-encodes cookie values itself; the banner decodes once.
+  res.cookies.set(AFF_INFO_COOKIE, `${aff.full_name.split(" ")[0]}|${Number(aff.customer_discount)}`, { sameSite: "lax", maxAge, path: "/" });
   return res;
 }

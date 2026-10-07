@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import type { Dictionary } from "@/dictionaries";
 import { localePath } from "@/lib/i18n";
 import type { Locale } from "@/lib/types";
@@ -33,7 +34,7 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         </nav>
         <div className="flex items-center gap-4">
           <span className="hidden sm:inline">
-            <LangSwitch lang={lang} label={dict.nav.language} />
+            <Lang lang={lang} label={dict.nav.language} />
           </span>
           <Link href={p("/book")} className="btn btn-primary !py-1.5 !text-lg">
             {dict.nav.book}
@@ -54,7 +55,7 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   </li>
                 ))}
                 <li className="border-t border-white/20 pt-3">
-                  <LangSwitch lang={lang} label={dict.nav.language} />
+                  <Lang lang={lang} label={dict.nav.language} />
                 </li>
               </ul>
             </div>
@@ -62,5 +63,20 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         </div>
       </div>
     </header>
+  );
+}
+
+// The switch reads the current URL, so it streams in; the fallback links to the other locale's home.
+function Lang({ lang, label }: { lang: Locale; label: string }) {
+  return (
+    <Suspense
+      fallback={
+        <Link href={lang === "en" ? "/es" : "/"} className="font-display tracking-widest text-cyan">
+          {label}
+        </Link>
+      }
+    >
+      <LangSwitch lang={lang} label={label} />
+    </Suspense>
   );
 }

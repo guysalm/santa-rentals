@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   partialPrefetching: true,
   // Tests and tools hit the dev server via 127.0.0.1 (localhost:3000 is another app).
   allowedDevOrigins: ["127.0.0.1"],
+  // Admin photo uploads go through server actions; Vercel caps bodies at 4.5 MB.
+  experimental: { serverActions: { bodySizeLimit: "4mb" } },
   turbopack: {
     rules: {
       "*.css": {

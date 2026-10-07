@@ -24,3 +24,7 @@ export const SITE = {
 
 export const waLink = (text?: string) =>
   `https://wa.me/${SITE.whatsapp}${text ? `?text=${encodeURIComponent(text)}` : ""}`;
+
+/** WhatsApp chat link to any number (e.g. a customer or agent). */
+export const waTo = (phone: string, text?: string) =>
+  `https://wa.me/${phone.replace(/\D/g, "")}${text ? `?text=${encodeURIComponent(text)}` : ""}`;

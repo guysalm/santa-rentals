@@ -11,7 +11,8 @@ export default defineConfig({
   workers: 1,
   reporter: [["list"]],
   use: {
-    baseURL: "http://127.0.0.1:3100",
+    // localhost (not 127.0.0.1) so auth cookies match NEXT_PUBLIC_SITE_URL in magic links
+    baseURL: "http://localhost:3100",
     trace: "retain-on-failure",
   },
   projects: [
