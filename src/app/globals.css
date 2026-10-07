@@ -1,0 +1,243 @@
+@import "tailwindcss";
+
+/* ── Vice City design tokens ─────────────────────────────────────────────
+   An original 80s-Miami homage: sunset gradient, neon pink & cyan, night
+   purple. No Rockstar assets or fonts. */
+@theme {
+  --color-night: #12061f;
+  --color-night-2: #1a0b2e;
+  --color-plum: #2b1149;
+  --color-plum-2: #3d1a63;
+  --color-pink: #ff2e88;
+  --color-pink-soft: #ff7ab8;
+  --color-orange: #ff8a3d;
+  --color-sun: #ffd23f;
+  --color-cyan: #22e4ff;
+  --color-mint: #3cf2a6;
+  --color-ink: #f8f1ff;
+  --color-muted: #cdb9ea;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bebas), Impact, "Arial Narrow", sans-serif;
+  --font-script: var(--font-yellowtail), "Brush Script MT", cursive;
+
+  --shadow-hard: 6px 6px 0 0 #000;
+  --shadow-hard-pink: 6px 6px 0 0 var(--color-pink);
+  --shadow-hard-cyan: 6px 6px 0 0 var(--color-cyan);
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-night);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  /* VHS scanline overlay */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    background: repeating-linear-gradient(to bottom, rgb(255 255 255 / 0.025) 0 1px, transparent 1px 3px);
+    mix-blend-mode: overlay;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    letter-spacing: 0.02em;
+    line-height: 0.95;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-cyan);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--color-pink);
+    color: #fff;
+  }
+}
+
+@layer components {
+  .neon-pink {
+    color: var(--color-pink-soft);
+    text-shadow: 0 0 4px #fff3, 0 0 12px var(--color-pink), 0 0 28px var(--color-pink);
+  }
+  .neon-cyan {
+    color: #b9f6ff;
+    text-shadow: 0 0 4px #fff4, 0 0 12px var(--color-cyan), 0 0 28px var(--color-cyan);
+  }
+  .sunset-text {
+    background: linear-gradient(180deg, var(--color-sun) 0%, var(--color-orange) 45%, var(--color-pink) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(3px 3px 0 #000);
+  }
+  .chrome-text {
+    background: linear-gradient(180deg, #fff 0%, #cfe9ff 40%, #5b6b8c 50%, #e6f3ff 62%, #fff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(2px 2px 0 var(--color-pink));
+  }
+  .hud-money {
+    font-family: var(--font-display);
+    color: var(--color-mint);
+    -webkit-text-stroke: 1px #000;
+    text-shadow: 2px 2px 0 #000;
+    letter-spacing: 0.04em;
+  }
+
+  /* "Loading screen" panel: thick border + hard offset shadow */
+  .panel {
+    background: linear-gradient(160deg, var(--color-plum) 0%, var(--color-night-2) 100%);
+    border: 3px solid #fff;
+    box-shadow: var(--shadow-hard-pink);
+  }
+  .panel-cyan {
+    border-color: var(--color-cyan);
+    box-shadow: var(--shadow-hard-cyan);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    letter-spacing: 0.06em;
+    padding: 0.6rem 1.4rem 0.5rem;
+    border: 3px solid #000;
+    box-shadow: var(--shadow-hard);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    white-space: nowrap;
+  }
+  .btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 0 #000;
+  }
+  .btn:active {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 0 #000;
+  }
+  .btn-primary {
+    background: linear-gradient(180deg, var(--color-pink-soft), var(--color-pink));
+    color: #fff;
+    text-shadow: 2px 2px 0 #000;
+  }
+  .btn-sun {
+    background: linear-gradient(180deg, var(--color-sun), var(--color-orange));
+    color: #1a0b2e;
+  }
+  .btn-ghost {
+    background: rgb(18 6 31 / 0.85);
+    color: var(--color-cyan);
+    border-color: var(--color-cyan);
+    box-shadow: 4px 4px 0 0 #000;
+  }
+  .btn[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .chip {
+    display: inline-block;
+    font-family: var(--font-display);
+    letter-spacing: 0.08em;
+    font-size: 0.95rem;
+    padding: 0.15rem 0.6rem 0.05rem;
+    border: 2px solid currentColor;
+  }
+
+  .field {
+    width: 100%;
+    background: var(--color-night);
+    border: 2px solid var(--color-plum-2);
+    color: var(--color-ink);
+    padding: 0.65rem 0.8rem;
+    font-size: 1rem;
+  }
+  .field:focus {
+    border-color: var(--color-cyan);
+    outline: none;
+  }
+  .label {
+    display: block;
+    font-family: var(--font-display);
+    letter-spacing: 0.08em;
+    font-size: 1.05rem;
+    color: var(--color-muted);
+    margin-bottom: 0.3rem;
+  }
+
+  /* 80s horizon: striped sun + perspective grid */
+  .sun {
+    background: linear-gradient(180deg, var(--color-sun) 0%, var(--color-orange) 45%, var(--color-pink) 100%);
+    border-radius: 9999px;
+    mask-image: linear-gradient(
+      180deg,
+      #000 0 52%,
+      transparent 52% 56%,
+      #000 56% 64%,
+      transparent 64% 68%,
+      #000 68% 75%,
+      transparent 75% 80%,
+      #000 80% 86%,
+      transparent 86% 92%,
+      #000 92%
+    );
+    box-shadow: 0 0 80px 10px rgb(255 46 136 / 0.45);
+  }
+  .grid-floor {
+    background-image:
+      linear-gradient(var(--color-pink) 2px, transparent 2px),
+      linear-gradient(90deg, var(--color-pink) 2px, transparent 2px);
+    background-size: 60px 40px;
+    transform: perspective(300px) rotateX(60deg);
+    transform-origin: top center;
+    mask-image: linear-gradient(180deg, #000 0%, transparent 85%);
+    animation: grid-move 1.6s linear infinite;
+    opacity: 0.55;
+  }
+  @keyframes grid-move {
+    to {
+      background-position: 0 40px;
+    }
+  }
+
+  .stripe-divider {
+    height: 10px;
+    background: linear-gradient(
+      180deg,
+      var(--color-sun) 0 20%,
+      var(--color-orange) 20% 40%,
+      var(--color-pink) 40% 60%,
+      var(--color-plum-2) 60% 80%,
+      var(--color-cyan) 80%
+    );
+  }
+
+  .prose-vice p { margin: 0 0 1rem; line-height: 1.7; color: var(--color-muted); }
+  .prose-vice h2 { font-size: 2.2rem; margin: 2.2rem 0 0.8rem; color: var(--color-sun); }
+  .prose-vice h3 { font-size: 1.6rem; margin: 1.6rem 0 0.6rem; color: var(--color-cyan); }
+  .prose-vice ul { list-style: none; padding: 0; margin: 0 0 1rem; }
+  .prose-vice li { padding-left: 1.4rem; position: relative; margin-bottom: 0.4rem; color: var(--color-muted); line-height: 1.6; }
+  .prose-vice li::before { content: "▸"; position: absolute; left: 0; color: var(--color-pink); }
+  .prose-vice a { color: var(--color-cyan); text-decoration: underline; }
+  .prose-vice strong { color: var(--color-ink); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
