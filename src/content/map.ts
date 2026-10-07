@@ -16,6 +16,43 @@ export const COAST = {
   ],
 };
 
+/** Terrain detail for the adventure-map look (decorative, approximate). */
+export const TERRAIN = {
+  rivers: [
+    // Bongo River, north of Manzanillo
+    "M262 20 C240 34 214 30 196 44 C182 54 166 56 150 54",
+    // Montezuma river to the gulf
+    "M512 286 C526 302 540 306 552 322 C558 332 566 336 574 342",
+    // Small creek reaching Playa Carmen
+    "M352 268 C330 274 312 268 294 272 C286 274 280 270 272 268",
+  ],
+  peaks: [
+    { x: 340, y: 120, s: 1 },
+    { x: 386, y: 104, s: 1.25 },
+    { x: 430, y: 124, s: 0.9 },
+    { x: 560, y: 150, s: 1.15 },
+    { x: 612, y: 196, s: 0.85 },
+    { x: 400, y: 330, s: 0.9 },
+    { x: 436, y: 370, s: 1.05 },
+  ],
+  palms: [
+    { x: 196, y: 120 },
+    { x: 232, y: 196 },
+    { x: 292, y: 296 },
+    { x: 350, y: 396 },
+    { x: 470, y: 474 },
+    { x: 540, y: 410 },
+    { x: 610, y: 318 },
+  ],
+  // Dirt trails (dashed yellow)
+  trails: [
+    "M330 346 C350 380 372 420 404 452",
+    "M266 256 C296 236 330 210 370 198",
+    "M452 250 C500 214 548 196 600 210",
+    "M196 140 C230 120 268 112 300 116",
+  ],
+};
+
 export interface MapPlace {
   id: string;
   name: string;

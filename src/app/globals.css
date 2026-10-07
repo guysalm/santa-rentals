@@ -79,6 +79,7 @@
   .headline {
     font-family: var(--font-anton);
     font-style: italic;
+    text-transform: uppercase;
     transform: skewX(-6deg);
     color: #fff;
     text-shadow: 0 0 2px #fff, 0 0 16px rgb(255 0 127 / 0.85), 0 0 40px rgb(255 0 127 / 0.55), 3px 3px 0 #2a0040;
@@ -102,6 +103,12 @@
     color: var(--color-mint);
     letter-spacing: 0.04em;
     text-shadow: 0 0 10px rgb(60 242 166 / 0.45);
+  }
+  .price-cyan {
+    font-family: var(--font-display);
+    letter-spacing: 0.04em;
+    color: #9ffbff;
+    text-shadow: 0 0 2px #fff, 0 0 10px var(--color-cyan), 0 0 22px rgb(0 243 255 / 0.6);
   }
   .price-pink {
     font-family: var(--font-display);
@@ -173,19 +180,20 @@
     background: rgb(0 243 255 / 0.12);
     box-shadow: 0 0 20px rgb(0 243 255 / 0.7);
   }
-  /* Pill outline used on cards ("Book now") */
+  /* Hollow neon outline frame used on fleet cards ("Book now") */
   .btn-pill {
-    border-radius: 999px;
-    background: rgb(13 4 24 / 0.6);
-    color: #fff;
-    border-color: #c86bff;
+    border-radius: 8px;
+    background: rgb(5 5 5 / 0.85);
+    color: var(--color-cyan);
+    border-color: var(--color-cyan);
     font-size: 1.05rem;
     padding: 0.35rem 1.1rem 0.25rem;
-    box-shadow: 0 0 10px rgb(200 107 255 / 0.55);
+    text-shadow: 0 0 8px rgb(0 243 255 / 0.7);
+    box-shadow: 0 0 10px rgb(0 243 255 / 0.55), inset 0 0 8px rgb(0 243 255 / 0.2);
   }
   .btn-pill:hover {
-    border-color: var(--color-pink);
-    box-shadow: 0 0 18px rgb(255 0 127 / 0.8);
+    background: rgb(0 243 255 / 0.1);
+    box-shadow: 0 0 20px rgb(0 243 255 / 0.85), inset 0 0 10px rgb(0 243 255 / 0.3);
   }
   /* Orange neon outline ("Call now") */
   .btn-call {

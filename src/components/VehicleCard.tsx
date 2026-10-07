@@ -25,7 +25,7 @@ export function VehicleCard({ lang, dict, model }: { lang: Locale; dict: Diction
         </h3>
         <p className="text-xs text-muted">{specs}</p>
         <p className="line-clamp-2 text-xs text-muted/80">{model.content[lang].tagline}</p>
-        <p className="price-pink mt-auto text-2xl">
+        <p className="price-cyan mt-auto text-2xl">
           {lang === "es" ? "Alquiler" : "Rent"} {formatUSD(model.priceDayCents)}
           <span className="text-base">{dict.common.perDay.replace(" ", "")}</span>
         </p>

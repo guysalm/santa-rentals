@@ -27,3 +27,10 @@ export const isIllustration = (src: string) => src.endsWith(".svg");
 
 /** Hero background photo (owner-supplied). */
 export const HERO_IMAGE = "/images/hero-beach.jpg";
+
+/**
+ * Glowing ATV + dirt bike silhouette shown in the hero's center, above the booking
+ * widget. Set to e.g. "/images/hero-vehicles.png" (transparent PNG/WebP) once the
+ * image is supplied; until then the hero reserves the space empty.
+ */
+export const HERO_VEHICLES: string | null = null;

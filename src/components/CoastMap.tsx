@@ -3,7 +3,7 @@ import type { Dictionary } from "@/dictionaries";
 import { localePath } from "@/lib/i18n";
 import { formatUSD } from "@/lib/money";
 import type { Locale, Tour } from "@/lib/types";
-import { COAST, MISSION_ROUTES, PLACES } from "@/content/map";
+import { COAST, MISSION_ROUTES, PLACES, TERRAIN } from "@/content/map";
 
 /**
  * "Pick your mission": retro neon map of the Santa Teresa coast (original
@@ -73,9 +73,26 @@ export function CoastMap({ lang, dict, tours }: { lang: Locale; dict: Dictionary
           <text x="640" y="470" fill="#00F3FF" fillOpacity=".45" fontSize="16" fontStyle="italic" letterSpacing="5" fontFamily="var(--font-bebas), Impact, sans-serif" transform="rotate(-32 640 470)">
             {lang === "es" ? "GOLFO DE NICOYA" : "GULF OF NICOYA"}
           </text>
-          <text x="410" y="430" fill="#7CF2C4" fillOpacity=".6" fontSize="11" letterSpacing="2" fontFamily="var(--font-inter), sans-serif">
-            {lang === "es" ? "RESERVA CABO BLANCO" : "CABO BLANCO RESERVE"}
-          </text>
+
+          {/* Terrain detail */}
+          {TERRAIN.rivers.map((d) => (
+            <path key={d} d={d} fill="none" stroke="#5CC8FF" strokeWidth="2.4" strokeLinecap="round" opacity=".85" />
+          ))}
+          {TERRAIN.peaks.map((k) => (
+            <g key={`${k.x}-${k.y}`} transform={`translate(${k.x} ${k.y}) scale(${k.s})`}>
+              <path d="M-16 10 L0 -14 L16 10 Z" fill="#2D6B4E" stroke="#0B2A1E" strokeWidth="1.5" />
+              <path d="M0 -14 L-5 -6 L0 -8 L5 -6 Z" fill="#E7F5EC" />
+            </g>
+          ))}
+          {TERRAIN.palms.map((p) => (
+            <g key={`${p.x}-${p.y}`} transform={`translate(${p.x} ${p.y})`} stroke="#0B2A1E" strokeWidth="1.6" strokeLinecap="round" fill="none">
+              <path d="M0 8 C0 3 1 -2 3 -6" />
+              <path d="M3 -6 C-1 -9 -5 -8 -7 -5 M3 -6 C3 -10 6 -12 9 -11 M3 -6 C7 -8 10 -6 11 -3" />
+            </g>
+          ))}
+          {TERRAIN.trails.map((d) => (
+            <path key={d} d={d} fill="none" stroke="#FFD23F" strokeWidth="2.2" strokeDasharray="5 6" strokeLinecap="round" opacity=".9" />
+          ))}
 
           {/* Roads */}
           {COAST.roads.map((d) => (
