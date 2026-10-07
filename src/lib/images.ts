@@ -16,6 +16,7 @@ const MODEL_PHOTO: Record<string, string> = {
   "honda-crf300l": "/images/vehicles/crf300l.jpg",
   "honda-crf250f": "/images/vehicles/crf.jpg",
   "honda-xr190": "/images/vehicles/xr190.jpg",
+  "honda-navi": "/images/vehicles/navi.jpg",
 };
 
 /** Tours reuse the matching vehicle photo; camping keeps its illustration. */
