@@ -14,7 +14,7 @@ export function VehicleCard({ lang, dict, model }: { lang: Locale; dict: Diction
   return (
     <article className="panel card-hover flex min-h-44 overflow-hidden">
       <Link href={localePath(lang, `/fleet/${model.slug}`)} className="relative w-[44%] shrink-0 overflow-hidden" tabIndex={-1} aria-hidden>
-        <Image src={img} alt="" fill unoptimized={isIllustration(img)} sizes="(min-width:1024px) 15vw, 45vw" className="object-cover object-bottom transition-transform duration-300 hover:scale-105" />
+        <Image src={img} alt="" fill unoptimized={isIllustration(img)} sizes="(min-width:1024px) 15vw, 45vw" className="object-cover transition-transform duration-300 hover:scale-105" />
         <span className="chip absolute left-2 top-2 bg-night/80 !text-xs text-cyan">{dict.types[model.type]}</span>
       </Link>
       <div className="flex min-w-0 flex-1 flex-col gap-1 border-l-2 border-cyan/50 p-4">

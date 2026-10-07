@@ -19,10 +19,12 @@ online booking with payment, admin backend, and an affiliate (agent/NFC keychain
 ## Trademark / copyright rules (public repo + public site)
 - Retro-80s look only. Never use a game/film/brand name, logo, font (e.g. Pricedown), screenshot or
   character in code, copy, metadata or assets — including comments and class names.
-- All artwork is original: `scripts/gen-art.ts` → `public/images/` (`npm run art:gen`), and the map in
-  `src/components/CoastMap.tsx`. Fonts are OFL Google Fonts. Social icons are generic outlines.
-- Real photos must be the business's own (uploaded in /admin) or properly licensed — they replace
-  the illustrations automatically via `src/lib/images.ts`.
+- Images: owner-supplied photos in `public/images/` (hero `hero-beach.jpg`, one photo per vehicle type
+  in `vehicles/`), chosen in `src/lib/images.ts`; per-model/tour photos uploaded in /admin win.
+  The camping card (`scripts/gen-art.ts`) and the map (`src/components/CoastMap.tsx`) are original
+  artwork. Fonts are OFL Google Fonts. Social icons are generic outlines.
+- Any new photo must be the business's own or properly licensed. Never commit files the owner drops
+  in `src/` that aren't site assets (e.g. saved chat pages) — the repo is public.
 
 ## Conventions
 - Money is integer cents (USD). Costa Rica time is fixed UTC-6 (`SITE.tzOffset`).
