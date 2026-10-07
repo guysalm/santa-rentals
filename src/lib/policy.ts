@@ -10,7 +10,6 @@ export interface CancellationTier {
 
 export interface BusinessSettings {
   bufferHours: number; // turnaround between rentals of the same unit
-  holdMinutes: number; // inventory hold while checkout is open
   cancellation: CancellationTier[];
   affiliateDefaults: { commissionRate: number; customerDiscount: number; tagFeeCents: number };
   cookieDays: number; // affiliate attribution window
@@ -21,7 +20,6 @@ export interface BusinessSettings {
 
 export const DEFAULT_SETTINGS: BusinessSettings = {
   bufferHours: 2,
-  holdMinutes: 15,
   cancellation: [
     { minHoursBefore: 72, feePct: 15 },
     { minHoursBefore: 24, feePct: 50 },

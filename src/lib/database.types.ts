@@ -45,14 +45,14 @@ isOneToOne: false
                   ]
                 },"affiliates": {
                   Row: {
-                    "approved_at": string | null,"area": string | null,"commission_rate": number,"created_at": string,"customer_discount": number,"email": string,"full_name": string,"id": string,"id_number": string | null,"nfc_serial": string | null,"notes": string | null,"payout_details": string | null,"payout_method": string,"phone": string,"slug": string | null,"status": Database["public"]['Enums']["affiliate_status"],"tag_fee_cents": number,"tag_fee_paid_at": string | null,"tag_fee_session_id": string | null,"user_id": string | null
+                    "approved_at": string | null,"area": string | null,"commission_rate": number,"created_at": string,"customer_discount": number,"email": string,"full_name": string,"id": string,"id_number": string | null,"locale": string,"nfc_serial": string | null,"notes": string | null,"payout_details": string | null,"payout_method": string,"phone": string,"slug": string | null,"status": Database["public"]['Enums']["affiliate_status"],"tag_fee_cents": number,"tag_fee_paid_at": string | null,"tag_fee_session_id": string | null,"user_id": string | null
                   }
                   ComputedFields: never
                   Insert: {
-                    "approved_at"?: string | null,"area"?: string | null,"commission_rate"?: number,"created_at"?: string,"customer_discount"?: number,"email": string,"full_name": string,"id"?: string,"id_number"?: string | null,"nfc_serial"?: string | null,"notes"?: string | null,"payout_details"?: string | null,"payout_method"?: string,"phone": string,"slug"?: string | null,"status"?: Database["public"]['Enums']["affiliate_status"],"tag_fee_cents"?: number,"tag_fee_paid_at"?: string | null,"tag_fee_session_id"?: string | null,"user_id"?: string | null
+                    "approved_at"?: string | null,"area"?: string | null,"commission_rate"?: number,"created_at"?: string,"customer_discount"?: number,"email": string,"full_name": string,"id"?: string,"id_number"?: string | null,"locale"?: string,"nfc_serial"?: string | null,"notes"?: string | null,"payout_details"?: string | null,"payout_method"?: string,"phone": string,"slug"?: string | null,"status"?: Database["public"]['Enums']["affiliate_status"],"tag_fee_cents"?: number,"tag_fee_paid_at"?: string | null,"tag_fee_session_id"?: string | null,"user_id"?: string | null
                   }
                   Update: {
-                    "approved_at"?: string | null,"area"?: string | null,"commission_rate"?: number,"created_at"?: string,"customer_discount"?: number,"email"?: string,"full_name"?: string,"id"?: string,"id_number"?: string | null,"nfc_serial"?: string | null,"notes"?: string | null,"payout_details"?: string | null,"payout_method"?: string,"phone"?: string,"slug"?: string | null,"status"?: Database["public"]['Enums']["affiliate_status"],"tag_fee_cents"?: number,"tag_fee_paid_at"?: string | null,"tag_fee_session_id"?: string | null,"user_id"?: string | null
+                    "approved_at"?: string | null,"area"?: string | null,"commission_rate"?: number,"created_at"?: string,"customer_discount"?: number,"email"?: string,"full_name"?: string,"id"?: string,"id_number"?: string | null,"locale"?: string,"nfc_serial"?: string | null,"notes"?: string | null,"payout_details"?: string | null,"payout_method"?: string,"phone"?: string,"slug"?: string | null,"status"?: Database["public"]['Enums']["affiliate_status"],"tag_fee_cents"?: number,"tag_fee_paid_at"?: string | null,"tag_fee_session_id"?: string | null,"user_id"?: string | null
                   }
                   Relationships: [
                     
@@ -334,8 +334,31 @@ isOneToOne: false
               "earned_cents": number,"paid_cents": number,"pending_cents": number
             }[]
                            },
+"availability_for_period":
+{ Args: { "p_buffer_hours": number,"p_end": string,"p_start": string }; Returns: {
+              "available": number,"model_id": string
+            }[]
+                           },
 "available_units":
 { Args: { "p_model": string,"p_period": unknown }; Returns: number
+                           },
+"build_weekly_payouts":
+{ Args: { "p_period_end": string }; Returns: {
+              "affiliate_id": string,"amount_cents": number,"commission_count": number,"payout_id": string
+            }[]
+                           },
+"complete_finished_reservations":
+{ Args: Record<PropertyKey, never>; Returns: number
+                           },
+"create_rental_hold":
+{ Args: { "p_affiliate": string,"p_buffer_hours": number,"p_customer": string,"p_delivery": string,"p_deposit": number,"p_discount": number,"p_end": string,"p_expires_at": string,"p_items": Json,"p_license_path": string,"p_locale": string,"p_notes": string,"p_start": string,"p_subtotal": number,"p_tax": number,"p_total": number,"p_waiver_name": string,"p_waiver_version": string }; Returns: {
+              "code": string,"manage_token": string,"reservation_id": string
+            }[]
+                           },
+"create_tour_hold":
+{ Args: { "p_affiliate": string,"p_customer": string,"p_date": string,"p_discount": number,"p_expires_at": string,"p_license_path": string,"p_locale": string,"p_notes": string,"p_pax": number,"p_subtotal": number,"p_tax": number,"p_total": number,"p_tour": string,"p_waiver_name": string,"p_waiver_version": string }; Returns: {
+              "code": string,"manage_token": string,"reservation_id": string
+            }[]
                            },
 "expire_stale_holds":
 { Args: Record<PropertyKey, never>; Returns: number
@@ -346,8 +369,17 @@ isOneToOne: false
 "is_staff":
 { Args: Record<PropertyKey, never>; Returns: boolean
                            },
+"mark_commissions_earned":
+{ Args: Record<PropertyKey, never>; Returns: number
+                           },
+"mark_payout_paid":
+{ Args: { "p_payout": string,"p_reference": string }; Returns: undefined
+                           },
 "pick_vehicle":
 { Args: { "p_model": string,"p_period": unknown }; Returns: string
+                           },
+"tour_seats_left":
+{ Args: { "p_date": string,"p_tour": string }; Returns: number
                            },
 "tour_seats_taken":
 { Args: { "p_departure": string }; Returns: number

@@ -10,6 +10,8 @@ export const env = {
   emailFrom: process.env.EMAIL_FROM ?? "Santa Rentals <bookings@santa.rentals>",
   cronSecret: process.env.CRON_SECRET ?? "",
   ipHashSalt: process.env.IP_HASH_SALT ?? "santa",
+  /** Comma-separated fallback recipients for admin notifications (merged with settings.adminEmails). */
+  adminEmails: (process.env.ADMIN_EMAILS ?? "").split(",").map((s) => s.trim()).filter(Boolean),
 };
 
 export const hasSupabase = () => Boolean(env.supabaseUrl && env.supabaseAnonKey);

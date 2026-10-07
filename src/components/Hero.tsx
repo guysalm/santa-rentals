@@ -3,6 +3,7 @@ import type { Dictionary } from "@/dictionaries";
 import { localePath } from "@/lib/i18n";
 import type { Locale } from "@/lib/types";
 import { VehicleArt } from "./VehicleArt";
+import { QuickBook } from "./QuickBook";
 
 function Palm({ className }: { className: string }) {
   return (
@@ -45,6 +46,7 @@ export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             {h.ctaTours}
           </Link>
         </div>
+        <QuickBook lang={lang} />
       </div>
       <VehicleArt type="atv" className="pointer-events-none absolute bottom-6 left-1/2 hidden h-40 -translate-x-1/2 md:block" />
     </section>

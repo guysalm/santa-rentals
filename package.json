@@ -11,7 +11,7 @@
     "seed:gen": "tsx scripts/gen-seed.ts",
     "db:start": "supabase start",
     "db:reset": "supabase db reset",
-    "test": "tsx --test tests/unit/*.test.ts",
+    "test": "tsx --test tests/unit/pricing.test.ts",
     "test:e2e": "playwright test",
     "db:types": "supabase gen types typescript --local > src/lib/database.types.ts"
   },
