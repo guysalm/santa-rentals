@@ -8,7 +8,7 @@ const TOUCH_PAUSE_MS = 6000;
  * Endless auto-rotating carousel: 3 cards per view on desktop, 2 on tablets, 1 on
  * phones. Items are rendered twice; when the scroll passes into the copy it jumps
  * back by exactly one set, so the loop is seamless. Pauses while hovered, focused
- * or touched (and never autoplays with prefers-reduced-motion). Hovered cards grow.
+ * or touched (and never autoplays with prefers-reduced-motion). Hovered cards grow 15% (track has room so they are not clipped).
  */
 export function FleetCarousel({ children, label, prev, next }: { children: React.ReactNode[]; label: string; prev: string; next: string }) {
   const track = useRef<HTMLUListElement>(null);
@@ -78,7 +78,7 @@ export function FleetCarousel({ children, label, prev, next }: { children: React
 
   const arrow =
     "absolute top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 place-items-center rounded-full border-2 border-cyan bg-night/90 text-xl text-cyan shadow-[0_0_14px_rgb(0_243_255/0.6)] transition hover:bg-cyan hover:text-night md:grid";
-  const item = "w-[88%] shrink-0 snap-start transition-transform duration-300 ease-out hover:z-10 hover:scale-[1.06] sm:w-[calc((100%-1.5rem)/2)] xl:w-[calc((100%-3rem)/3)]";
+  const item = "w-[88%] shrink-0 snap-start transition-transform duration-300 ease-out hover:z-10 md:hover:scale-[1.15] sm:w-[calc((100%-1.5rem)/2)] xl:w-[calc((100%-3rem)/3)]";
 
   return (
     <div
@@ -98,7 +98,7 @@ export function FleetCarousel({ children, label, prev, next }: { children: React
       </button>
       <ul
         ref={track}
-        className="flex snap-x snap-mandatory gap-6 overflow-x-auto px-3 py-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x snap-mandatory gap-6 overflow-x-auto px-3 py-5 [scrollbar-width:none] md:-mx-10 md:-my-3 md:scroll-px-10 md:px-10 md:py-8 [&::-webkit-scrollbar]:hidden"
       >
         {children.map((child, i) => (
           <li key={i} className={item}>
