@@ -26,8 +26,8 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <Hero lang={lang} dict={dict} overlap />
 
       {/* Fleet carousel overlapping the bottom of the hero scene, like the mockup */}
-      <section className="relative z-10 mx-auto -mt-52 max-w-7xl px-4 pb-10">
-        <h2 className="mb-3 text-4xl md:text-5xl">
+      <section className="relative z-10 mx-auto max-w-7xl px-4 pb-10 pt-6 lg:-mt-52 lg:pt-0">
+        <h2 className="mb-3 text-3xl sm:text-4xl md:text-5xl">
           {/* Dark outline keeps the sunset gradient readable over the beach photo */}
           <span className="sunset-text [filter:drop-shadow(0_0_1px_#000)_drop-shadow(0_2px_0_#000)_drop-shadow(0_0_14px_#000)]">{h.fleetTitle}</span>
         </h2>

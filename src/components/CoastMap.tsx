@@ -34,10 +34,10 @@ export function CoastMap({ lang, dict, tours }: { lang: Locale; dict: Dictionary
     .join("");
 
   return (
-    <div className="coast-map grid items-start gap-10 lg:grid-cols-[1.35fr_1fr]">
+    <div className="coast-map grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)]">
       <style>{highlight}</style>
       {/* Tilted frame like the mockup */}
-      <figure className="relative lg:[transform:perspective(1600px)_rotateY(-9deg)_rotate(-2.5deg)]">
+      <figure className="relative min-w-0 lg:[transform:perspective(1600px)_rotateY(-9deg)_rotate(-2.5deg)]">
         <div className="overflow-hidden rounded-xl border-[3px] border-cyan shadow-[0_0_0_1px_rgb(0_243_255/0.4),0_0_22px_rgb(0_243_255/0.6)]">
           <svg viewBox="0 0 800 600" role="img" aria-labelledby="coast-map-title" className="block h-auto w-full">
             <title id="coast-map-title">{`${dict.home.mapTitle} — Santa Teresa, Mal País, Montezuma, Cabo Blanco`}</title>
@@ -176,12 +176,12 @@ export function CoastMap({ lang, dict, tours }: { lang: Locale; dict: Dictionary
           </svg>
         </div>
         {/* Angled green banner breaking out of the frame's bottom-right corner */}
-        <p className="absolute -bottom-5 -right-2 rotate-[-6deg] rounded-md border-2 border-black bg-gradient-to-b from-[#3BE07A] to-[#16A34A] px-5 py-1.5 font-anton text-2xl uppercase tracking-wider text-[#04140A] shadow-[0_0_18px_rgb(34_197_94/0.65),4px_4px_0_#000] sm:-right-6 sm:text-3xl">
+        <p className="absolute -bottom-5 right-2 rotate-[-6deg] rounded-md border-2 border-black bg-gradient-to-b from-[#3BE07A] to-[#16A34A] px-4 py-1 font-anton text-xl uppercase tracking-wider text-[#04140A] shadow-[0_0_18px_rgb(34_197_94/0.65),4px_4px_0_#000] sm:-right-6 sm:px-5 sm:py-1.5 sm:text-3xl">
           {dict.home.mapTitle}
         </p>
       </figure>
 
-      <div>
+      <div className="min-w-0">
         <p className="mb-4 text-muted">{dict.home.mapLead}</p>
         <ul className="space-y-3">
           {missions.map((t, i) => {
@@ -197,7 +197,7 @@ export function CoastMap({ lang, dict, tours }: { lang: Locale; dict: Dictionary
                     {i + 1}
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className="block truncate font-display text-xl tracking-wide">{t.content[lang].title}</span>
+                    <span className="block font-display text-xl leading-tight tracking-wide line-clamp-2 sm:truncate">{t.content[lang].title}</span>
                     <span className="text-xs text-muted">
                       {dict.categories[t.category].name} · {t.overnight ? dict.common.overnight : `${t.durationHours} ${dict.common.hours}`}
                     </span>

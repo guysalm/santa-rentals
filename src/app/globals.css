@@ -30,6 +30,7 @@
 @layer base {
   html {
     color-scheme: dark;
+    overflow-x: clip; /* safety net: nothing may cause sideways scrolling on phones */
     scroll-behavior: smooth;
   }
   body {
@@ -37,7 +38,7 @@
     color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
   /* Subtle CRT scanlines */
   body::after {

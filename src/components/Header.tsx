@@ -25,7 +25,7 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   );
   return (
     <header className="sticky top-0 z-50 bg-night/90 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-2 sm:gap-4 sm:px-4">
         <Link href={p("/")} aria-label="Santa Rentals — home">
           <Logo />
         </Link>
@@ -35,12 +35,12 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             <NavLinks links={links} />
           </Suspense>
         </nav>
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <span className="hidden sm:inline">
             <Lang lang={lang} label={dict.nav.language} />
           </span>
           <span className="hidden lg:inline">{call}</span>
-          <Link href={p("/book")} className="btn btn-primary !px-4 !py-1.5 !text-lg xl:hidden">
+          <Link href={p("/book")} className="btn btn-primary !px-3 !py-1 !text-base sm:!px-4 sm:!py-1.5 sm:!text-lg xl:hidden">
             {dict.nav.book}
           </Link>
           {/* No-JS mobile menu */}

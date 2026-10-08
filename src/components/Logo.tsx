@@ -1,7 +1,7 @@
 // Original wordmark: generic coconut-palm icon + "SANTA.RENTALS".
 function PalmIcon() {
   return (
-    <svg viewBox="0 0 48 48" className="h-10 w-10 shrink-0 drop-shadow-[0_0_6px_#00f3ff]" aria-hidden fill="none" strokeLinecap="round" strokeLinejoin="round">
+    <svg viewBox="0 0 48 48" className="h-8 w-8 shrink-0 sm:h-10 sm:w-10 drop-shadow-[0_0_6px_#00f3ff]" aria-hidden fill="none" strokeLinecap="round" strokeLinejoin="round">
       {/* trunk */}
       <path d="M22 46 C21 36 22 26 26 17" stroke="#00F3FF" strokeWidth="2.6" />
       <path d="M21.6 40h2.4 M21.4 34h2.6 M22 28h2.6 M23.4 22h2.4" stroke="#00F3FF" strokeWidth="1.2" />
@@ -20,9 +20,9 @@ function PalmIcon() {
 
 export function Logo({ className = "" }: { className?: string }) {
   return (
-    <span className={`inline-flex select-none items-center gap-2 ${className}`}>
+    <span className={`inline-flex select-none items-center gap-1.5 sm:gap-2 ${className}`}>
       <PalmIcon />
-      <span className="font-anton text-2xl leading-none tracking-wide sm:text-[1.7rem]">
+      <span className="font-anton text-xl leading-none tracking-wide sm:text-[1.7rem]">
         <span className="text-white [text-shadow:0_0_2px_#fff,0_0_10px_#ff007f,0_0_22px_#ff007f]">SANTA</span>
         <span className="text-pink">.</span>
         <span className="text-cyan [text-shadow:0_0_10px_#00f3ff]">RENTALS</span>

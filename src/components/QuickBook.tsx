@@ -12,11 +12,11 @@ const COPY = {
 export function QuickBook({ lang }: { lang: Locale }) {
   const c = COPY[lang];
   return (
-    <Form action={localePath(lang, "/book")} className="panel relative mt-6 w-full !overflow-visible px-5 pb-5 pt-9 text-left backdrop-blur-sm">
-      <h2 className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-md bg-night px-4 font-anton text-3xl uppercase tracking-wider neon-cyan">
+    <Form action={localePath(lang, "/book")} className="panel relative mt-6 w-full !overflow-visible px-4 pb-4 pt-8 text-left backdrop-blur-sm sm:px-5 sm:pb-5 sm:pt-9">
+      <h2 className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-md bg-night px-4 font-anton text-2xl uppercase sm:text-3xl tracking-wider neon-cyan">
         {c.title}
       </h2>
-      <div className="grid gap-3 sm:grid-cols-[2fr_1fr] sm:items-end">
+      <div className="grid grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] items-end gap-3 sm:grid-cols-[2fr_1fr]">
         <label className="block">
           <span className="label !text-sm">{c.date}</span>
           <input type="date" name="date" className="field" required />
@@ -31,7 +31,7 @@ export function QuickBook({ lang }: { lang: Locale }) {
           </select>
         </label>
       </div>
-      <button type="submit" className="btn btn-primary mt-4 w-full !text-lg">
+      <button type="submit" className="btn btn-primary mt-3 w-full !text-lg sm:mt-4">
         {c.go}
       </button>
     </Form>
